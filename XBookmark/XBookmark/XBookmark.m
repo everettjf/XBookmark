@@ -7,6 +7,7 @@
 //
 
 #import "XBookmark.h"
+#import "XBookmarkModel.h"
 
 @interface XBookmark()
 
@@ -37,11 +38,7 @@
 }
 - (void)notificationLog:(NSNotification *)notify
 {
-//    NSLog(@"notify = %@",notify.name);
-    
     if ([notify.name isEqualToString:@"transition from one file to another"]) {
-        NSLog(@"notify = %@",notify.name);
-        
         NSURL *originURL = [[notify.object valueForKey:@"next"] valueForKey:@"documentURL"];
         
         if (originURL != nil && [originURL absoluteString].length >= 7 ) {
@@ -60,19 +57,41 @@
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Do Action" action:@selector(doMenuAction) keyEquivalent:@"F"];
-        [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask  ];
+        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:@"F"];
+        [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask];
         [actionMenuItem setTarget:self];
         [[menuItem submenu] addItem:actionMenuItem];
     }
 }
 
-// Sample Action, for menu item:
-- (void)doMenuAction
+- (void)toggleBookmark
 {
     NSLog(@"action url = %@",self.url);
-    [[NSWorkspace sharedWorkspace] selectFile:self.url inFileViewerRootedAtPath:@""];
     
+    IDESourceCodeEditor* editor = [XBookmarkModel currentEditor];
+    NSTextView* textView = editor.textView;
+    if (nil == textView)
+        return;
+    
+    NSRange range = [textView.selectedRanges[0] rangeValue];
+    NSLog(@"range = %ld,%ld",range.location,range.length);
+    
+    NSUInteger lineNumber = [[[textView string]substringToIndex:range.location]componentsSeparatedByString:@"\n"].count;
+    NSLog(@"current line = %ld",lineNumber);
+        
+        
+//        NSRange lineRange = [[textView string]lineRangeForRange:range];
+//        NSLog(@"line range = %ld,%ld",lineRange.location,lineRange.length);
+    
+    IDEWorkspaceDocument *document = [XBookmarkModel currentWorkspaceDocument];
+    if(nil == document)
+        return;
+    DVTFilePath *filePath = document.workspace.representingFilePath;
+    NSLog(@"file path = %@",filePath.fileURL);
+    
+    
+    
+//    [[NSWorkspace sharedWorkspace] selectFile:self.url inFileViewerRootedAtPath:@""];
 //    NSAlert *alert = [[NSAlert alloc] init];
 //    [alert setMessageText:@"Hello, World"];
 //    [alert runModal];
