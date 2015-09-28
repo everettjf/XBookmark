@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XBookmark/XBookmark.m"
-            timestampString = "465152059.335565"
+            timestampString = "465155741.754786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-didApplicationFinishLaunchingNotification:"
             landmarkType = "5">
          </BreakpointContent>

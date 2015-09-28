@@ -54,11 +54,14 @@
     
     // Create menu items, initialize UI, etc.
     // Sample Menu Item:
+    
+	unichar c = NSF3FunctionKey;
+	NSString *f3 = [NSString stringWithCharacters:&c length:1];
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:@"F"];
-        [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask];
+        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:f3];
+        [actionMenuItem setKeyEquivalentModifierMask:0];
         [actionMenuItem setTarget:self];
         [[menuItem submenu] addItem:actionMenuItem];
     }
