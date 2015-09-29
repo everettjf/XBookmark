@@ -77,27 +77,19 @@
         return;
     
     NSRange range = [textView.selectedRanges[0] rangeValue];
-    NSLog(@"range = %ld,%ld",range.location,range.length);
     
     NSUInteger lineNumber = [[[textView string]substringToIndex:range.location]componentsSeparatedByString:@"\n"].count;
     NSLog(@"current line = %ld",lineNumber);
+    
+    NSLog(@"source path = %@",editor.sourceCodeDocument.fileURL);
         
-        
-//        NSRange lineRange = [[textView string]lineRangeForRange:range];
-//        NSLog(@"line range = %ld,%ld",lineRange.location,lineRange.length);
-    
-    IDEWorkspaceDocument *document = [XBookmarkModel currentWorkspaceDocument];
-    if(nil == document)
-        return;
-    DVTFilePath *filePath = document.workspace.representingFilePath;
-    NSLog(@"file path = %@",filePath.fileURL);
-    
-    
-    
-//    [[NSWorkspace sharedWorkspace] selectFile:self.url inFileViewerRootedAtPath:@""];
-//    NSAlert *alert = [[NSAlert alloc] init];
-//    [alert setMessageText:@"Hello, World"];
-//    [alert runModal];
+    {
+        IDEWorkspaceDocument *document = [XBookmarkModel currentWorkspaceDocument];
+        if(nil == document)
+            return;
+        DVTFilePath *workspacefilePath = document.workspace.representingFilePath;
+        NSLog(@"workspace file path = %@",workspacefilePath.fileURL);
+    }
 }
 
 - (void)dealloc

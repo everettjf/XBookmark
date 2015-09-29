@@ -93,6 +93,8 @@
 @interface IDESourceCodeDocument : NSDocument
 - (DVTSourceTextStorage*)textStorage;
 - (NSUndoManager*)undoManager;
+- (DVTFilePath *)filePath;
+- (NSArray *)knownFileReferences;
 @end
 
 @interface IDESourceCodeComparisonEditor : NSObject
@@ -134,5 +136,6 @@
 + (IDEWorkspaceDocument*)currentWorkspaceDocument;
 + (IDEWorkspaceTabController*)tabController;
 + (IDESourceCodeEditor*)currentEditor;
++ (IDESourceCodeDocument*)currentSourceCodeDocument;
 
 @end
