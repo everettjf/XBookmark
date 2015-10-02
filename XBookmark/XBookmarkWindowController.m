@@ -79,5 +79,42 @@
     // locate bookmark
     [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
 }
+- (IBAction)removeBookmarkClicked:(id)sender {
+    XBookmarkEntity *bookmark = [self selectedBookmark];
+    if(nil == bookmark)
+        return;
+    [[XBookmarkModel sharedModel]removeBookmark:bookmark.sourcePath lineNumber:bookmark.lineNumber];
+}
+- (IBAction)clearBookmarkClicked:(id)sender {
+    if(_bookmarks.count > 1){
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"OK"];
+        [alert addButtonWithTitle:@"Cancel"];
+        [alert setMessageText:@"Clear all bookmarks ?"];
+        [alert setAlertStyle:NSWarningAlertStyle];
+        if ([alert runModal] == NSAlertFirstButtonReturn) {
+            [[XBookmarkModel sharedModel]clearBookmarks];
+        }
+        return;
+    }
+    
+    [[XBookmarkModel sharedModel]clearBookmarks];
+}
+- (IBAction)helpClicked:(id)sender {
+    NSString *githubURLString = @"http://github.com/everettjf/XBookmark";
+    NSString *versionString = @"0.1";
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Source on GitHub"];
+    [alert setMessageText:@"XBookmark"];
+    [alert setInformativeText:[NSString stringWithFormat:@"GitHub:%@\nVersion:%@",githubURLString,versionString]];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    NSModalResponse resp = [alert runModal];
+    if(resp == NSAlertSecondButtonReturn){
+        // Star
+        [[NSWorkspace sharedWorkspace]openURL:[NSURL URLWithString:githubURLString]];
+    }
+}
 
 @end

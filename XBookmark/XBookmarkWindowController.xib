@@ -22,14 +22,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="479" height="269"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="37" horizontalPageScroll="10" verticalLineScroll="37" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYV-ro-Pzb">
-                        <rect key="frame" x="0.0" y="-1" width="480" height="270"/>
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="37" horizontalPageScroll="10" verticalLineScroll="37" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYV-ro-Pzb">
+                        <rect key="frame" x="0.0" y="37" width="480" height="232"/>
                         <clipView key="contentView" id="Srs-g7-vWE">
-                            <rect key="frame" x="1" y="1" width="478" height="268"/>
+                            <rect key="frame" x="1" y="1" width="478" height="230"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="35" rowSizeStyle="automatic" viewBased="YES" id="wDo-JK-DHS">
-                                    <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="478" height="230"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -85,12 +85,60 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-2w-ASz">
+                        <rect key="frame" x="427" y="9" width="19" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="5Tp-Qt-ED7"/>
+                            <constraint firstAttribute="width" constant="19" id="Mw6-gy-ZCB"/>
+                        </constraints>
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e3f-1A-gRN">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="removeBookmarkClicked:" target="-2" id="mni-1s-lhI"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="neg-vI-q3e">
+                        <rect key="frame" x="454" y="9" width="19" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="GNT-x8-vUO"/>
+                            <constraint firstAttribute="height" constant="19" id="RF1-I0-HcN"/>
+                        </constraints>
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSTrashEmpty" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V8G-G0-9tg">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clearBookmarkClicked:" target="-2" id="rql-9q-aDF"/>
+                        </connections>
+                    </button>
+                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ITQ-wl-zZE">
+                        <rect key="frame" x="5" y="5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="kED-VY-BCo"/>
+                            <constraint firstAttribute="width" constant="21" id="s7X-p3-fqV"/>
+                        </constraints>
+                        <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r5p-QO-5ww">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="helpClicked:" target="-2" id="LVb-70-U2a"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="sYV-ro-Pzb" secondAttribute="trailing" id="IDJ-kp-Qcb"/>
+                    <constraint firstAttribute="bottom" secondItem="ITQ-wl-zZE" secondAttribute="bottom" constant="8" id="HFL-R4-Vrw"/>
+                    <constraint firstItem="neg-vI-q3e" firstAttribute="leading" secondItem="9jw-2w-ASz" secondAttribute="trailing" constant="8" id="HPp-cM-5Uc"/>
+                    <constraint firstAttribute="trailing" secondItem="sYV-ro-Pzb" secondAttribute="trailing" constant="-1" id="IDJ-kp-Qcb"/>
+                    <constraint firstAttribute="bottom" secondItem="9jw-2w-ASz" secondAttribute="bottom" constant="10" id="NsE-xY-9to"/>
                     <constraint firstItem="sYV-ro-Pzb" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="VNe-fh-C3U"/>
-                    <constraint firstAttribute="bottom" secondItem="sYV-ro-Pzb" secondAttribute="bottom" id="hAP-QG-drh"/>
+                    <constraint firstAttribute="bottom" secondItem="sYV-ro-Pzb" secondAttribute="bottom" constant="37" id="hAP-QG-drh"/>
+                    <constraint firstAttribute="trailing" secondItem="neg-vI-q3e" secondAttribute="trailing" constant="6" id="mkS-IZ-ban"/>
+                    <constraint firstAttribute="bottom" secondItem="neg-vI-q3e" secondAttribute="bottom" constant="10" id="ozh-ku-KUr"/>
                     <constraint firstItem="sYV-ro-Pzb" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="vI5-oX-gfR"/>
+                    <constraint firstItem="ITQ-wl-zZE" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="7" id="yJe-fz-5pW"/>
                 </constraints>
             </view>
             <connections>
@@ -99,4 +147,8 @@
             <point key="canvasLocation" x="310.5" y="290.5"/>
         </window>
     </objects>
+    <resources>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSTrashEmpty" width="32" height="32"/>
+    </resources>
 </document>

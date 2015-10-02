@@ -57,6 +57,12 @@
     [self insertObject:bookmark inBookmarksAtIndex:0];
 }
 
+-(void)clearBookmarks{
+    while(_bookmarks.count > 0){
+        [self removeObjectFromBookmarksAtIndex:_bookmarks.count - 1];
+    }
+}
+
 -(void)removeBookmark:(NSString *)sourcePath lineNumber:(NSUInteger)lineNumber{
     [_bookmarks enumerateObjectsUsingBlock:^(XBookmarkEntity *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if([sourcePath isEqualToString:obj.sourcePath] && lineNumber == obj.lineNumber){

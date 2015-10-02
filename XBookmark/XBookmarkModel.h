@@ -26,6 +26,7 @@
 -(void)addBookmark:(XBookmarkEntity*)bookmark;
 -(void)removeBookmark:(NSString*)sourcePath lineNumber:(NSUInteger)lineNumber;
 -(BOOL)hasBookmark:(NSString*)sourcePath lineNumber:(NSUInteger)lineNumber;
+-(void)clearBookmarks;
 
 -(BOOL)toggleBookmark:(XBookmarkEntity*)bookmark;
 
