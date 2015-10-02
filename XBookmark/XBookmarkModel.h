@@ -1,0 +1,32 @@
+//
+//  XBookmarkModel.h
+//  XBookmark
+//
+//  Created by everettjf on 10/2/15.
+//  Copyright © 2015 everettjf. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface XBookmarkEntity : NSObject
+@property (nonatomic,strong) NSString *uniqueID;
+@property (nonatomic,strong) NSString *sourcePath;
+@property (nonatomic,assign) NSUInteger lineNumber;
+@property (nonatomic,strong) NSString *comment;
+
+-(instancetype)initWithSourcePath:(NSString*)sourcePath withLineNumber:(NSUInteger)lineNumber;
+@end
+
+
+@interface XBookmarkModel : NSObject
+
++(XBookmarkModel *)sharedModel;
+
+@property (nonatomic,strong) NSMutableArray *bookmarks;
+
+-(void)addBookmark:(XBookmarkEntity*)bookmark;
+-(void)removeBookmark:(NSString*)uniqueID;
+
+@end
+
+

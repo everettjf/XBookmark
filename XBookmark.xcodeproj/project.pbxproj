@@ -13,6 +13,7 @@
 		D1B081121BB5B471007B4821 /* XBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B081111BB5B471007B4821 /* XBookmark.m */; };
 		D1B081151BB5B471007B4821 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B081141BB5B471007B4821 /* NSObject_Extension.m */; };
 		D1B0811E1BB9A6B0007B4821 /* XcodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0811D1BB9A6B0007B4821 /* XcodeUtil.m */; settings = {ASSET_TAGS = (); }; };
+		D1E7A73F1BBE90A800E7AC2B /* XBookmarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E7A73E1BBE90A800E7AC2B /* XBookmarkModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		D1B081161BB5B471007B4821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1B0811C1BB9A6B0007B4821 /* XcodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeUtil.h; sourceTree = "<group>"; };
 		D1B0811D1BB9A6B0007B4821 /* XcodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeUtil.m; sourceTree = "<group>"; };
+		D1E7A73D1BBE90A800E7AC2B /* XBookmarkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkModel.h; sourceTree = "<group>"; };
+		D1E7A73E1BBE90A800E7AC2B /* XBookmarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				D1B0810D1BB5B471007B4821 /* Supporting Files */,
 				D1B0811C1BB9A6B0007B4821 /* XcodeUtil.h */,
 				D1B0811D1BB9A6B0007B4821 /* XcodeUtil.m */,
+				D1E7A73D1BBE90A800E7AC2B /* XBookmarkModel.h */,
+				D1E7A73E1BBE90A800E7AC2B /* XBookmarkModel.m */,
 			);
 			path = XBookmark;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			files = (
 				D1B081121BB5B471007B4821 /* XBookmark.m in Sources */,
 				D1B081151BB5B471007B4821 /* NSObject_Extension.m in Sources */,
+				D1E7A73F1BBE90A800E7AC2B /* XBookmarkModel.m in Sources */,
 				D1B0811E1BB9A6B0007B4821 /* XcodeUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
