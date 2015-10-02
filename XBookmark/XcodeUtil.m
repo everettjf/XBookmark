@@ -69,4 +69,13 @@
 
     return nil;
 }
+
++(NSString *)currentWorkspaceFilePath{
+    IDEWorkspaceDocument *document = [XcodeUtil currentWorkspaceDocument];
+    if(nil == document)
+        return nil;
+    DVTFilePath *workspacefilePath = document.workspace.representingFilePath;
+    return [workspacefilePath.fileURL absoluteString];
+}
+
 @end

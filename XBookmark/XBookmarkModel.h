@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface XBookmarkEntity : NSObject
-@property (nonatomic,strong) NSString *uniqueID;
 @property (nonatomic,strong) NSString *sourcePath;
 @property (nonatomic,assign) NSUInteger lineNumber;
 @property (nonatomic,strong) NSString *comment;
@@ -25,7 +24,10 @@
 @property (nonatomic,strong) NSMutableArray *bookmarks;
 
 -(void)addBookmark:(XBookmarkEntity*)bookmark;
--(void)removeBookmark:(NSString*)uniqueID;
+-(void)removeBookmark:(NSString*)sourcePath lineNumber:(NSUInteger)lineNumber;
+-(BOOL)hasBookmark:(NSString*)sourcePath lineNumber:(NSUInteger)lineNumber;
+
+-(BOOL)toggleBookmark:(XBookmarkEntity*)bookmark;
 
 @end
 

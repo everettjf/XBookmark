@@ -8,6 +8,7 @@
 
 #import "XBookmark.h"
 #import "XcodeUtil.h"
+#import "XBookmarkModel.h"
 
 @interface XBookmark()
 
@@ -38,6 +39,7 @@
 }
 - (void)notificationLog:(NSNotification *)notify
 {
+//    NSLog(@"notify name = %@",notify.name);
     if ([notify.name isEqualToString:@"transition from one file to another"]) {
         NSURL *originURL = [[notify.object valueForKey:@"next"] valueForKey:@"documentURL"];
         
@@ -55,21 +57,47 @@
     // Create menu items, initialize UI, etc.
     // Sample Menu Item:
     
-	unichar c = NSF3FunctionKey;
-	NSString *f3 = [NSString stringWithCharacters:&c length:1];
+	unichar cf3 = NSF3FunctionKey;
+	NSString *f3 = [NSString stringWithCharacters:&cf3 length:1];
+    
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:f3];
-        [actionMenuItem setKeyEquivalentModifierMask:0];
-        [actionMenuItem setTarget:self];
-        [[menuItem submenu] addItem:actionMenuItem];
+        
+        {
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:f3];
+            [actionMenuItem setKeyEquivalentModifierMask:0];
+            [actionMenuItem setTarget:self];
+            [[menuItem submenu] addItem:actionMenuItem];
+        }
+        {
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark) keyEquivalent:f3];
+            [actionMenuItem setKeyEquivalentModifierMask:NSControlKeyMask];
+            [actionMenuItem setTarget:self];
+            [[menuItem submenu] addItem:actionMenuItem];
+        }
+        {
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Previous Bookmark" action:@selector(previousBookmark) keyEquivalent:f3];
+            [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask | NSControlKeyMask];
+            [actionMenuItem setTarget:self];
+            [[menuItem submenu] addItem:actionMenuItem];
+        }
+        {
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks) keyEquivalent:f3];
+            [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask];
+            [actionMenuItem setTarget:self];
+            [[menuItem submenu] addItem:actionMenuItem];
+        }
     }
+}
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)toggleBookmark
 {
-    NSLog(@"action url = %@",self.url);
+//    NSString *workspaceFilePath = [XcodeUtil currentWorkspaceFilePath];
     
     IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
     NSTextView* textView = editor.textView;
@@ -77,24 +105,30 @@
         return;
     
     NSRange range = [textView.selectedRanges[0] rangeValue];
-    
     NSUInteger lineNumber = [[[textView string]substringToIndex:range.location]componentsSeparatedByString:@"\n"].count;
-    NSLog(@"current line = %ld",lineNumber);
+    NSString *sourcePath = [editor.sourceCodeDocument.fileURL absoluteString];
     
-    NSLog(@"source path = %@",editor.sourceCodeDocument.fileURL);
-        
-    {
-        IDEWorkspaceDocument *document = [XcodeUtil currentWorkspaceDocument];
-        if(nil == document)
-            return;
-        DVTFilePath *workspacefilePath = document.workspace.representingFilePath;
-        NSLog(@"workspace file path = %@",workspacefilePath.fileURL);
-    }
+    XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePath withLineNumber:lineNumber];
+    [[XBookmarkModel sharedModel]toggleBookmark:bookmark];
+    
+    
+    NSLog(@"-------------Current Bookmarks-----------------------");
+    [[XBookmarkModel sharedModel].bookmarks enumerateObjectsUsingBlock:^(XBookmarkEntity *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"(%lu) Line=%ld\n\t%@",idx,obj.lineNumber,obj.sourcePath);
+    }];
+    
+    NSLog(@"-----------------------------------------------------");
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)nextBookmark{
+    
 }
+- (void)previousBookmark{
+    
+}
+- (void)showBookmarks{
+    
+}
+
 
 @end

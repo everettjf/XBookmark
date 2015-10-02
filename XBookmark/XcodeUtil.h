@@ -138,4 +138,7 @@
 + (IDESourceCodeEditor*)currentEditor;
 + (IDESourceCodeDocument*)currentSourceCodeDocument;
 
+// Helper
++ (NSString*)currentWorkspaceFilePath;
+
 @end
