@@ -9,11 +9,13 @@
 #import "XBookmark.h"
 #import "XcodeUtil.h"
 #import "XBookmarkModel.h"
+#import "XBookmarkWindowController.h"
 
 @interface XBookmark()
 
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
-@property (nonatomic,strong) NSString *url;
+@property (nonatomic, strong) XBookmarkWindowController *windowController;
+
 @end
 
 @implementation XBookmark
@@ -40,22 +42,12 @@
 - (void)notificationLog:(NSNotification *)notify
 {
 //    NSLog(@"notify name = %@",notify.name);
-    if ([notify.name isEqualToString:@"transition from one file to another"]) {
-        NSURL *originURL = [[notify.object valueForKey:@"next"] valueForKey:@"documentURL"];
-        
-        if (originURL != nil && [originURL absoluteString].length >= 7 ) {
-            self.url = [originURL.absoluteString substringFromIndex:7];
-        }
-    }
 }
 
 - (void)didApplicationFinishLaunchingNotification:(NSNotification*)noti
 {
     //removeObserver
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
-    
-    // Create menu items, initialize UI, etc.
-    // Sample Menu Item:
     
 	unichar cf3 = NSF3FunctionKey;
 	NSString *f3 = [NSString stringWithCharacters:&cf3 length:1];
@@ -106,18 +98,13 @@
     
     NSRange range = [textView.selectedRanges[0] rangeValue];
     NSUInteger lineNumber = [[[textView string]substringToIndex:range.location]componentsSeparatedByString:@"\n"].count;
-    NSString *sourcePath = [editor.sourceCodeDocument.fileURL absoluteString];
+    
+    // length of "file://" is 7
+    NSString *sourcePath = [[editor.sourceCodeDocument.fileURL absoluteString] substringFromIndex:7];
     
     XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePath withLineNumber:lineNumber];
     [[XBookmarkModel sharedModel]toggleBookmark:bookmark];
     
-    
-    NSLog(@"-------------Current Bookmarks-----------------------");
-    [[XBookmarkModel sharedModel].bookmarks enumerateObjectsUsingBlock:^(XBookmarkEntity *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@"(%lu) Line=%ld\n\t%@",idx,obj.lineNumber,obj.sourcePath);
-    }];
-    
-    NSLog(@"-----------------------------------------------------");
 }
 
 - (void)nextBookmark{
@@ -127,7 +114,17 @@
     
 }
 - (void)showBookmarks{
-    
+    if(self.windowController.window.isVisible){
+        [self.windowController.window close];
+    }else{
+        if(self.windowController == nil){
+            self.windowController = [[XBookmarkWindowController alloc]initWithWindowNibName:@"XBookmarkWindowController"];
+        }
+        
+        self.windowController.window.title = [[XcodeUtil currentWorkspaceDocument].displayName stringByDeletingLastPathComponent];
+        [self.windowController.window makeKeyAndOrderFront:nil];
+        [self.windowController refreshBookmarks];
+    }
 }
 
 

@@ -78,4 +78,82 @@
     return [workspacefilePath.fileURL absoluteString];
 }
 
++ (void)highlightLine:(NSUInteger)lineNumber inTextView:(NSTextView*)textView
+{
+    NSString* text = [textView string];
+
+    NSRegularExpression* re =
+        [NSRegularExpression regularExpressionWithPattern:@"\n"
+                                                  options:0
+                                                    error:nil];
+
+    NSArray* result = [re matchesInString:text
+                                  options:NSMatchingReportCompletion
+                                    range:NSMakeRange(0, text.length)];
+
+    if (result.count <= lineNumber) {
+        return;
+    }
+
+    NSUInteger location = 0;
+    NSTextCheckingResult* aim = result[lineNumber];
+    location = aim.range.location;
+
+    NSRange range = [text lineRangeForRange:NSMakeRange(location, 0)];
+
+    [textView scrollRangeToVisible:range];
+
+    [textView setSelectedRange:range];
+}
+
++ (BOOL)openSourceFile:(NSString*)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber
+{
+
+    NSWindowController* currentWindowController =
+        [[NSApp mainWindow] windowController];
+
+    // NSLog(@"currentWindowController %@",[currentWindowController description]);
+
+    if ([currentWindowController
+            isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
+
+        // NSLog(@"Open in current Xocde");
+        id<NSApplicationDelegate> appDelegate = (id<NSApplicationDelegate>)[NSApp delegate];
+        if ([appDelegate application:NSApp openFile:sourceFilePath]) {
+
+            IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
+            if ([editor isKindOfClass:NSClassFromString(@"IDESourceCodeEditor")]) {
+                NSTextView* textView = editor.textView;
+                if (textView) {
+
+                    [self highlightLine:lineNumber inTextView:textView];
+
+                    return YES;
+                }
+            }
+        }
+    }
+
+    // open the file
+    BOOL result = [[NSWorkspace sharedWorkspace] openFile:sourceFilePath
+                                          withApplication:@"Xcode"];
+
+    // open the line
+    if (result) {
+
+        // pretty slow to open file with applescript
+
+        NSString* theSource = [NSString
+            stringWithFormat:
+                @"do shell script \"xed --line %ld \" & quoted form of \"%@\"",
+                lineNumber, sourceFilePath];
+        NSAppleScript* theScript = [[NSAppleScript alloc] initWithSource:theSource];
+        [theScript performSelectorInBackground:@selector(executeAndReturnError:)
+                                    withObject:nil];
+
+        return NO;
+    }
+
+    return result;
+}
 @end

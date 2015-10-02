@@ -140,5 +140,6 @@
 
 // Helper
 + (NSString*)currentWorkspaceFilePath;
++ (BOOL)openSourceFile:(NSString*)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber;
 
 @end
