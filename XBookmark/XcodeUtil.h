@@ -1,5 +1,5 @@
 //
-//  XBookmarkModel.h
+//  XcodeUtil.h
 //  XBookmark
 //
 //  Created by everettjf on 9/29/15.
@@ -132,7 +132,7 @@
 @property (readonly) IDEWorkspace* workspace;
 @end
 
-@interface XBookmarkModel : NSObject
+@interface XcodeUtil : NSObject
 + (IDEWorkspaceDocument*)currentWorkspaceDocument;
 + (IDEWorkspaceTabController*)tabController;
 + (IDESourceCodeEditor*)currentEditor;

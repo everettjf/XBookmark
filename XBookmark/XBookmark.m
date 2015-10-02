@@ -7,7 +7,7 @@
 //
 
 #import "XBookmark.h"
-#import "XBookmarkModel.h"
+#import "XcodeUtil.h"
 
 @interface XBookmark()
 
@@ -71,7 +71,7 @@
 {
     NSLog(@"action url = %@",self.url);
     
-    IDESourceCodeEditor* editor = [XBookmarkModel currentEditor];
+    IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
     NSTextView* textView = editor.textView;
     if (nil == textView)
         return;
@@ -84,7 +84,7 @@
     NSLog(@"source path = %@",editor.sourceCodeDocument.fileURL);
         
     {
-        IDEWorkspaceDocument *document = [XBookmarkModel currentWorkspaceDocument];
+        IDEWorkspaceDocument *document = [XcodeUtil currentWorkspaceDocument];
         if(nil == document)
             return;
         DVTFilePath *workspacefilePath = document.workspace.representingFilePath;

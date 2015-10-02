@@ -1,15 +1,15 @@
 //
-//  XBookmarkModel.m
+//  XcodeUtil.m
 //  XBookmark
 //
 //  Created by everettjf on 9/29/15.
 //  Copyright © 2015 everettjf. All rights reserved.
 //
 
-#import "XBookmarkModel.h"
+#import "XcodeUtil.h"
 #import <objc/runtime.h>
 
-@implementation XBookmarkModel
+@implementation XcodeUtil
 
 
 + (IDEWorkspaceTabController*)tabController
