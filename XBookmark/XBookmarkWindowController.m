@@ -21,7 +21,20 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    self.window.level = NSFloatingWindowLevel;
+    self.window.hidesOnDeactivate = YES;
+    
+    [[XBookmarkModel sharedModel] addObserver:self forKeyPath:@"bookmarks" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)dealloc{
+    [[XBookmarkModel sharedModel] removeObserver:self forKeyPath:@"bookmarks"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    if([keyPath isEqualToString:@"bookmarks"]){
+        [self refreshBookmarks];
+    }
 }
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
@@ -46,13 +59,6 @@
 -(void)refreshBookmarks{
     self.bookmarks = [XBookmarkModel sharedModel].bookmarks;
     [self.bookmarksTableView reloadData];
-    
-//    NSLog(@"-------------Current Bookmarks-----------------------");
-//    [[XBookmarkModel sharedModel].bookmarks enumerateObjectsUsingBlock:^(XBookmarkEntity *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NSLog(@"(%lu) Line=%ld\n\t%@",idx,obj.lineNumber,obj.sourcePath);
-//    }];
-//    NSLog(@"-----------------------------------------------------");
-    
 }
 
 -(XBookmarkEntity*)selectedBookmark{
