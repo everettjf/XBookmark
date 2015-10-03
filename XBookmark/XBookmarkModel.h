@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface XBookmarkEntity : NSObject
+@interface XBookmarkEntity : NSObject<NSCoding>
 @property (nonatomic,strong) NSString *sourcePath;
 @property (nonatomic,assign) NSUInteger lineNumber;
 @property (nonatomic,strong) NSString *comment;
@@ -29,6 +29,11 @@
 -(void)clearBookmarks;
 
 -(BOOL)toggleBookmark:(XBookmarkEntity*)bookmark;
+
+-(void)saveBookmarks;
+-(void)loadBookmarks;
+
+-(void)loadOnceBookmarks;
 
 @end
 

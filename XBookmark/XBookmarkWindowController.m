@@ -24,6 +24,9 @@
     self.window.level = NSFloatingWindowLevel;
     self.window.hidesOnDeactivate = YES;
     
+    [[XBookmarkModel sharedModel]loadOnceBookmarks];
+    [self refreshBookmarks];
+    
     [[XBookmarkModel sharedModel] addObserver:self forKeyPath:@"bookmarks" options:NSKeyValueObservingOptionNew context:nil];
 }
 
@@ -84,8 +87,10 @@
     if(nil == bookmark)
         return;
     [[XBookmarkModel sharedModel]removeBookmark:bookmark.sourcePath lineNumber:bookmark.lineNumber];
+    [[XBookmarkModel sharedModel]saveBookmarks];
 }
 - (IBAction)clearBookmarkClicked:(id)sender {
+    BOOL shouldClear = NO;
     if(_bookmarks.count > 1){
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"OK"];
@@ -93,12 +98,16 @@
         [alert setMessageText:@"Clear all bookmarks ?"];
         [alert setAlertStyle:NSWarningAlertStyle];
         if ([alert runModal] == NSAlertFirstButtonReturn) {
-            [[XBookmarkModel sharedModel]clearBookmarks];
+            shouldClear = YES;
         }
-        return;
+    }else{
+        shouldClear = YES;
     }
     
-    [[XBookmarkModel sharedModel]clearBookmarks];
+    if(shouldClear){
+        [[XBookmarkModel sharedModel]clearBookmarks];
+        [[XBookmarkModel sharedModel]saveBookmarks];
+    }
 }
 - (IBAction)helpClicked:(id)sender {
     NSString *githubURLString = @"http://github.com/everettjf/XBookmark";

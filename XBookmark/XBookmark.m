@@ -89,7 +89,7 @@
 
 - (void)toggleBookmark
 {
-//    NSString *workspaceFilePath = [XcodeUtil currentWorkspaceFilePath];
+    [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
     IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
     NSTextView* textView = editor.textView;
@@ -105,6 +105,7 @@
     XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePath withLineNumber:lineNumber];
     [[XBookmarkModel sharedModel]toggleBookmark:bookmark];
     
+    [[XBookmarkModel sharedModel]saveBookmarks];
 }
 
 - (void)nextBookmark{

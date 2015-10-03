@@ -7,6 +7,7 @@
 //
 
 #import "XBookmarkModel.h"
+#import "XcodeUtil.h"
 
 @implementation XBookmarkEntity
 
@@ -18,6 +19,22 @@
         self.comment = @"";
     }
     return self;
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        self.sourcePath = [aDecoder decodeObjectForKey:@"sourcePath"];
+        self.lineNumber = [aDecoder decodeIntegerForKey:@"lineNumber"];
+        self.comment = [aDecoder decodeObjectForKey:@"comment"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:_sourcePath forKey:@"sourcePath"];
+    [aCoder encodeInteger:_lineNumber forKey:@"lineNumber"];
+    [aCoder encodeObject:_comment forKey:@"comment"];
 }
 
 @end
@@ -89,6 +106,66 @@
     }
     [self addBookmark:bookmark];
     return NO;
+}
+
+-(void)saveBookmarks{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *workspace = [self currentWorkspaceSettingFilePath];
+        if(workspace == nil)
+            return;
+        
+        if(self.bookmarks.count == 0){
+            [[NSFileManager defaultManager] removeItemAtPath:workspace error:nil];
+        }else{
+            [NSKeyedArchiver archiveRootObject:self.bookmarks toFile:workspace];
+        }
+    });
+}
+-(void)loadBookmarks{
+    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile:[self currentWorkspaceSettingFilePath]];
+    if(nil == data)
+        return;
+    
+    self.bookmarks = [data mutableCopy];
+}
+
+-(NSString*)currentWorkspaceSettingFilePath{
+    static NSString *cachedWorkspaceFilePath = nil;
+    NSString *workspaceFilePath = [XcodeUtil currentWorkspaceFilePath];
+    if(workspaceFilePath == nil){
+        workspaceFilePath = cachedWorkspaceFilePath;
+    }else{
+        cachedWorkspaceFilePath = [workspaceFilePath copy];
+    }
+    
+    if(workspaceFilePath == nil)
+        return nil;
+    
+    NSString *settingFileName = [NSString stringWithFormat:@"%@-%lu.xbookmark",
+                                 [workspaceFilePath lastPathComponent],
+                                 [workspaceFilePath hash]
+                                 ];
+    
+    return [[XBookmarkModel settingDirectory] stringByAppendingPathComponent:settingFileName];
+}
+
++ (NSString*)settingDirectory
+{
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString* settingDirectory = [(NSString*)[paths firstObject] stringByAppendingPathComponent:@"XBookmark"];
+    
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    if (![fileManger fileExistsAtPath:settingDirectory]) {
+        [fileManger createDirectoryAtPath:settingDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return settingDirectory;
+}
+
+-(void)loadOnceBookmarks{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self loadBookmarks];
+    });
 }
 
 @end
