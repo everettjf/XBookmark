@@ -16,3 +16,6 @@ Bookmark Plugin for Xcode
 # TODO
 - Comment
 - Toggle Bookmark with Mnemonic
+
+# Problem
+- Slow locating

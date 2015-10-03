@@ -10,6 +10,11 @@
 #import "XBookmarkModel.h"
 #import "XcodeUtil.h"
 
+@implementation XBookmarkTableCellView
+
+
+@end
+
 @interface XBookmarkWindowController () <NSTableViewDelegate,NSTableViewDataSource>
 @property (weak) IBOutlet NSTableView *bookmarksTableView;
 @property (nonatomic,strong) NSArray *bookmarks;
@@ -40,15 +45,11 @@
 }
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-    NSTableCellView *cellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    XBookmarkTableCellView *cellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
     if([tableColumn.identifier isEqualToString:@"BookmarkColumn"]){
         XBookmarkEntity *bookmark = [self.bookmarks objectAtIndex:row];
-        NSString *description = [NSString stringWithFormat:@"%@:%lu (%@)",
-                                 [bookmark.sourcePath lastPathComponent],
-                                 bookmark.lineNumber,
-                                 bookmark.sourcePath
-                                 ];
-        cellView.textField.stringValue = description;
+        cellView.titleField.stringValue = [NSString stringWithFormat:@"%@:%lu",[bookmark.sourcePath lastPathComponent],bookmark.lineNumber];
+        cellView.subtitleField.stringValue = bookmark.sourcePath;
     }
     return cellView;
 }

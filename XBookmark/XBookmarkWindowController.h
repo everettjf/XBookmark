@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@interface XBookmarkTableCellView : NSTableCellView
+@property (weak) IBOutlet NSTextField *titleField;
+@property (weak) IBOutlet NSTextField *subtitleField;
+@end
 
 @interface XBookmarkWindowController : NSWindowController
 
