@@ -71,7 +71,7 @@
 }
 
 -(void)addBookmark:(XBookmarkEntity *)bookmark{
-    [self insertObject:bookmark inBookmarksAtIndex:0];
+    [self insertObject:bookmark inBookmarksAtIndex:self.bookmarks.count];
 }
 
 -(void)clearBookmarks{

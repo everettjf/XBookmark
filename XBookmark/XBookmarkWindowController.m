@@ -24,7 +24,6 @@
     self.window.level = NSFloatingWindowLevel;
     self.window.hidesOnDeactivate = YES;
     
-    [[XBookmarkModel sharedModel]loadOnceBookmarks];
     [self refreshBookmarks];
     
     [[XBookmarkModel sharedModel] addObserver:self forKeyPath:@"bookmarks" options:NSKeyValueObservingOptionNew context:nil];

@@ -80,6 +80,8 @@
 
 + (void)highlightLine:(NSUInteger)lineNumber inTextView:(NSTextView*)textView
 {
+    --lineNumber;
+    
     NSString* text = [textView string];
 
     NSRegularExpression* re =

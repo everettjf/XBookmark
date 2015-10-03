@@ -16,6 +16,8 @@
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
 @property (nonatomic, strong) XBookmarkWindowController *windowController;
 
+@property (nonatomic, assign) NSUInteger currentBookmarkIndex;
+
 @end
 
 @implementation XBookmark
@@ -30,6 +32,10 @@
     if (self = [super init]) {
         // reference to plugin's bundle, for resource access
         self.bundle = plugin;
+        
+        // default to the first bookmark (if have bookmarks)
+        self.currentBookmarkIndex = 0;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(didApplicationFinishLaunchingNotification:)
                                                      name:NSApplicationDidFinishLaunchingNotification
@@ -106,15 +112,50 @@
     [[XBookmarkModel sharedModel]toggleBookmark:bookmark];
     
     [[XBookmarkModel sharedModel]saveBookmarks];
+    
+    // point to the new added bookmark
+    self.currentBookmarkIndex = [XBookmarkModel sharedModel].bookmarks.count - 1;
 }
 
 - (void)nextBookmark{
+    [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
+    XBookmarkModel *model = [XBookmarkModel sharedModel];
+    if(model.bookmarks.count == 0)
+        return;
+    NSUInteger nextIndex = self.currentBookmarkIndex + 1;
+    if(nextIndex >= model.bookmarks.count){
+        // 如果超了就默认最后一个
+        nextIndex = model.bookmarks.count - 1;
+    }
+    
+    XBookmarkEntity *bookmark = [model.bookmarks objectAtIndex:nextIndex];
+    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    self.currentBookmarkIndex = nextIndex;
 }
 - (void)previousBookmark{
+    [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
+    XBookmarkModel *model = [XBookmarkModel sharedModel];
+    if(model.bookmarks.count == 0)
+        return;
+    NSUInteger previousIndex;
+    if(self.currentBookmarkIndex == 0){
+        previousIndex = 0;
+    }else{
+        previousIndex = self.currentBookmarkIndex - 1;
+    }
+    if(previousIndex >= model.bookmarks.count){
+        previousIndex = model.bookmarks.count - 1;
+    }
+    
+    XBookmarkEntity *bookmark = [model.bookmarks objectAtIndex:previousIndex];
+    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    self.currentBookmarkIndex = previousIndex;
 }
 - (void)showBookmarks{
+    [[XBookmarkModel sharedModel]loadOnceBookmarks];
+    
     if(self.windowController.window.isVisible){
         [self.windowController.window close];
     }else{
