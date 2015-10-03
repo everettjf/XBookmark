@@ -35,6 +35,7 @@
 		D1E7A7401BBECB4600E7AC2B /* XBookmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkWindowController.h; sourceTree = "<group>"; };
 		D1E7A7411BBECB4600E7AC2B /* XBookmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkWindowController.m; sourceTree = "<group>"; };
 		D1E7A7421BBECB4600E7AC2B /* XBookmarkWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBookmarkWindowController.xib; sourceTree = "<group>"; };
+		D1E7A7451BC0330400E7AC2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 		D1B080FC1BB5B471007B4821 = {
 			isa = PBXGroup;
 			children = (
+				D1E7A7451BC0330400E7AC2B /* README.md */,
 				D1B0810C1BB5B471007B4821 /* XBookmark */,
 				D1B081071BB5B471007B4821 /* Frameworks */,
 				D1B081061BB5B471007B4821 /* Products */,

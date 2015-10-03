@@ -116,7 +116,7 @@
     [alert addButtonWithTitle:@"OK"];
     [alert addButtonWithTitle:@"Source on GitHub"];
     [alert setMessageText:@"XBookmark"];
-    [alert setInformativeText:[NSString stringWithFormat:@"GitHub:%@\nVersion:%@",githubURLString,versionString]];
+    [alert setInformativeText:[NSString stringWithFormat:@"Author:everettjf\nGitHub:%@\nVersion:%@",githubURLString,versionString]];
     [alert setAlertStyle:NSWarningAlertStyle];
     NSModalResponse resp = [alert runModal];
     if(resp == NSAlertSecondButtonReturn){

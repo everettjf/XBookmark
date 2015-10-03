@@ -1,4 +1,4 @@
-*Project under Developing*
+*Project under Developing (80% for the first publish)*
 
 # XBookmark
 Bookmark Plugin for Xcode
@@ -14,4 +14,5 @@ Bookmark Plugin for Xcode
 
 
 # TODO
+- Comment
 - Toggle Bookmark with Mnemonic
