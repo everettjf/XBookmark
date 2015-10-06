@@ -1,5 +1,3 @@
-*Project under Developing (80% for the first publish)*
-
 # XBookmark
 Bookmark Plugin for Xcode
 
@@ -10,11 +8,15 @@ Bookmark Plugin for Xcode
 - Previous Bookmark
 
 # How To Install
-// todo
 
+- Step 1 : Install [Alcatraz](http://alcatraz.io).
+- Step 2 : Search `XBookmark` from Window->Package Manager and click `Install`.
+- Step 3 : Restart Xcode.
+
+Now, you can see menus in the `Edit` Menu.
 
 # TODO
-- Comment
+- Bookmark Comment
 - Toggle Bookmark with Mnemonic
 
 # Problem
