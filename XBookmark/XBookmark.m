@@ -70,7 +70,7 @@
         }
         {
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark) keyEquivalent:f3];
-            [actionMenuItem setKeyEquivalentModifierMask:NSControlKeyMask];
+            [actionMenuItem setKeyEquivalentModifierMask:NSCommandKeyMask];
             [actionMenuItem setTarget:self];
             [[menuItem submenu] addItem:actionMenuItem];
         }
