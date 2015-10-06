@@ -2,11 +2,7 @@
 Bookmark Plugin for Xcode
 
 # Screenshot
-1. Sub menus added into Xcode menu `Edit`
-    ![menu](http://everettjf.github.io/images/extern/xbookmark1.png)
-
-2. Click menu `Show Bookmarks` will display the bookmark list
-    ![menu](http://everettjf.github.io/images/extern/xbookmark2.png)
+    ![xbookmark](http://everettjf.github.io/images/extern/xbookmark3.png)
 
 # Feature
 - Toggle Bookmark
