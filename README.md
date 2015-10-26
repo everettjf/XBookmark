@@ -32,6 +32,10 @@ Now, you can see menus in the `Edit` Menu.
 - Bookmark Comment
 - Toggle Bookmark with Mnemonic
 
+# Thanks for
+- XToDo
+- JumpMarks
+
 # History Versions
 
 - 2015-10-26 0.2 Fix problem (main for slow locating)
