@@ -62,29 +62,33 @@
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
         
+        NSMenuItem *mainMenu = [[menuItem submenu]addItemWithTitle:@"XBookmark" action:nil keyEquivalent:@""];
+        NSMenu *submenu = [[NSMenu alloc]init];
+        mainMenu.submenu = submenu;
+        
         {
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:f3];
             [actionMenuItem setKeyEquivalentModifierMask:0];
             [actionMenuItem setTarget:self];
-            [[menuItem submenu] addItem:actionMenuItem];
+            [[mainMenu submenu] addItem:actionMenuItem];
         }
         {
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark) keyEquivalent:f3];
             [actionMenuItem setKeyEquivalentModifierMask:NSCommandKeyMask];
             [actionMenuItem setTarget:self];
-            [[menuItem submenu] addItem:actionMenuItem];
+            [[mainMenu submenu] addItem:actionMenuItem];
         }
         {
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Previous Bookmark" action:@selector(previousBookmark) keyEquivalent:f3];
             [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask | NSControlKeyMask];
             [actionMenuItem setTarget:self];
-            [[menuItem submenu] addItem:actionMenuItem];
+            [[mainMenu submenu] addItem:actionMenuItem];
         }
         {
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks) keyEquivalent:f3];
             [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask];
             [actionMenuItem setTarget:self];
-            [[menuItem submenu] addItem:actionMenuItem];
+            [[mainMenu submenu] addItem:actionMenuItem];
         }
     }
 }
