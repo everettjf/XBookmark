@@ -28,6 +28,7 @@
     
     self.window.level = NSFloatingWindowLevel;
     self.window.hidesOnDeactivate = YES;
+    self.bookmarksTableView.action = @selector(onTableViewClick:);
     
     [self refreshBookmarks];
     
@@ -75,12 +76,7 @@
 }
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
-    XBookmarkEntity *bookmark = [self selectedBookmark];
-    if(nil == bookmark)
-        return;
-    
-    // locate bookmark
-    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+//    NSLog(@"selection did change");
 }
 - (IBAction)removeBookmarkClicked:(id)sender {
     XBookmarkEntity *bookmark = [self selectedBookmark];
@@ -124,6 +120,20 @@
         // Star
         [[NSWorkspace sharedWorkspace]openURL:[NSURL URLWithString:githubURLString]];
     }
+}
+
+-(void)onTableViewClick:(id)sender{
+//    NSLog(@"row click");
+    NSInteger row = self.bookmarksTableView.clickedRow;
+    if(row < 0 || row >= self.bookmarks.count)
+        return;
+    
+    XBookmarkEntity *bookmark = [self selectedBookmark];
+    if(nil == bookmark)
+        return;
+    
+    // locate bookmark
+    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
 }
 
 @end
