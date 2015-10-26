@@ -1,6 +1,9 @@
 # XBookmark
 Bookmark Plugin for Xcode
 
+# Latest Version
+**0.2**
+
 # Screenshot
 
 ![xbookmark](http://everettjf.github.io/images/extern/xbookmark3.png)
@@ -29,5 +32,7 @@ Now, you can see menus in the `Edit` Menu.
 - Bookmark Comment
 - Toggle Bookmark with Mnemonic
 
-# Problem
-- Slow locating
+# History Versions
+
+- 2015-10-26 0.2 Fix problem (main for slow locating)
+- 2015-10-06 0.1 First Release 
