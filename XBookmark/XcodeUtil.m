@@ -9,13 +9,25 @@
 #import "XcodeUtil.h"
 #import <objc/runtime.h>
 
+@implementation XcodeGlobal
+
++(XcodeGlobal *)shared{
+    static XcodeGlobal *inst;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        inst = [[XcodeGlobal alloc]init];
+    });
+    return inst;
+}
+
+@end
+
 @implementation XcodeUtil
 
 
 + (IDEWorkspaceTabController*)tabController
 {
-    NSWindowController* currentWindowController =
-        [[NSApp keyWindow] windowController];
+    NSWindowController* currentWindowController = [XcodeUtil currentIDEWorkspaceWindowController];
     if ([currentWindowController
             isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
         IDEWorkspaceWindowController* workspaceController = (IDEWorkspaceWindowController*)currentWindowController;
@@ -27,8 +39,7 @@
 
 + (id)currentEditor
 {
-    NSWindowController* currentWindowController =
-        [[NSApp mainWindow] windowController];
+    NSWindowController* currentWindowController = [XcodeUtil currentIDEWorkspaceWindowController];
     if ([currentWindowController
             isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
         IDEWorkspaceWindowController* workspaceController = (IDEWorkspaceWindowController*)currentWindowController;
@@ -45,8 +56,7 @@
 
 + (IDEWorkspaceDocument*)currentWorkspaceDocument
 {
-    NSWindowController* currentWindowController =
-        [[NSApp mainWindow] windowController];
+    NSWindowController* currentWindowController = [XcodeUtil currentIDEWorkspaceWindowController];
     id document = [currentWindowController document];
     if (currentWindowController &&
         [document isKindOfClass:NSClassFromString(@"IDEWorkspaceDocument")]) {
@@ -113,60 +123,12 @@
     [textView setSelectedRange:range];
 }
 
-//+ (BOOL)slowOpenSourceFile:(NSString*)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber
-//{
-//
-//    NSWindowController* currentWindowController =
-//        [[NSApp mainWindow] windowController];
-//
-//    // NSLog(@"currentWindowController %@",[currentWindowController description]);
-//
-//    if ([currentWindowController
-//            isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
-//
-//        // NSLog(@"Open in current Xocde");
-//        id<NSApplicationDelegate> appDelegate = (id<NSApplicationDelegate>)[NSApp delegate];
-//        if ([appDelegate application:NSApp openFile:sourceFilePath]) {
-//
-//            IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
-//            if ([editor isKindOfClass:NSClassFromString(@"IDESourceCodeEditor")]) {
-//                NSTextView* textView = editor.textView;
-//                if (textView) {
-//
-//                    [self highlightLine:lineNumber inTextView:textView];
-//
-//                    return YES;
-//                }
-//            }
-//        }
-//    }
-//
-//    // open the file
-//    BOOL result = [[NSWorkspace sharedWorkspace] openFile:sourceFilePath
-//                                          withApplication:@"Xcode"];
-//
-//    // open the line
-//    if (result) {
-//
-//        // pretty slow to open file with applescript
-//
-//        NSString* theSource = [NSString
-//            stringWithFormat:
-//                @"do shell script \"xed --line %ld \" & quoted form of \"%@\"",
-//                lineNumber, sourceFilePath];
-//        NSAppleScript* theScript = [[NSAppleScript alloc] initWithSource:theSource];
-//        [theScript performSelectorInBackground:@selector(executeAndReturnError:)
-//                                    withObject:nil];
-//
-//        return NO;
-//    }
-//
-//    return result;
-//}
 
 + (IDEWorkspaceWindowController*)currentIDEWorkspaceWindowController {
-    NSWindowController *mainWindowController = [[NSApp mainWindow] windowController];
-    return (IDEWorkspaceWindowController *)mainWindowController;
+    if([XcodeGlobal shared].mainWorkspaceWindowController == nil){
+        [XcodeGlobal shared].mainWorkspaceWindowController = (IDEWorkspaceWindowController *)[[NSApp mainWindow]windowController];
+    }
+    return [XcodeGlobal shared].mainWorkspaceWindowController;
 }
 
 + (void)jumpToFileURL:(NSURL *)fileURL {

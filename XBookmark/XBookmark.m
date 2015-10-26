@@ -160,6 +160,9 @@
         [self.windowController.window close];
     }else{
         if(self.windowController == nil){
+            // Remember the current IDE workspace window controller
+            [XcodeUtil currentIDEWorkspaceWindowController];
+            
             self.windowController = [[XBookmarkWindowController alloc]initWithWindowNibName:@"XBookmarkWindowController"];
         }
         

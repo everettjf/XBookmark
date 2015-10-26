@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="307" height="352"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="200" height="200"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="307" height="352"/>
@@ -31,6 +31,7 @@
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="35" rowSizeStyle="automatic" viewBased="YES" id="wDo-JK-DHS">
                                     <rect key="frame" x="0.0" y="0.0" width="308" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -54,6 +55,7 @@
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kwl-Wy-SAM">
                                                             <rect key="frame" x="1" y="15" width="303" height="17"/>
+                                                            <animations/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="SourceFileName.m:100" id="fBJ-yv-8Yj">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -62,6 +64,7 @@
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6vt-O6-GiC">
                                                             <rect key="frame" x="3" y="0.0" width="299" height="17"/>
+                                                            <animations/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SourceFileAbsoluteFilePath" placeholderString="" id="xmX-7d-1DK">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
@@ -78,6 +81,7 @@
                                                         <constraint firstItem="6vt-O6-GiC" firstAttribute="top" secondItem="Ken-Tm-92n" secondAttribute="top" constant="18" id="vLv-A1-zkX"/>
                                                         <constraint firstItem="kwl-Wy-SAM" firstAttribute="top" secondItem="Ken-Tm-92n" secondAttribute="top" constant="3" id="zSd-bf-jlR"/>
                                                     </constraints>
+                                                    <animations/>
                                                     <connections>
                                                         <outlet property="subtitleField" destination="6vt-O6-GiC" id="2bs-So-BBS"/>
                                                         <outlet property="titleField" destination="kwl-Wy-SAM" id="I3T-9X-PHx"/>
@@ -92,15 +96,19 @@
                                     </connections>
                                 </tableView>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="bft-tf-y9S">
+                        <animations/>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="bft-tf-y9S">
                             <rect key="frame" x="1" y="255" width="480" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="O0l-6e-OqH">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="O0l-6e-OqH">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
                     </scrollView>
                     <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ITQ-wl-zZE">
@@ -109,6 +117,7 @@
                             <constraint firstAttribute="height" constant="21" id="kED-VY-BCo"/>
                             <constraint firstAttribute="width" constant="21" id="s7X-p3-fqV"/>
                         </constraints>
+                        <animations/>
                         <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r5p-QO-5ww">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -123,6 +132,7 @@
                             <constraint firstAttribute="height" constant="19" id="5Tp-Qt-ED7"/>
                             <constraint firstAttribute="width" constant="19" id="Mw6-gy-ZCB"/>
                         </constraints>
+                        <animations/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e3f-1A-gRN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -137,6 +147,7 @@
                             <constraint firstAttribute="width" constant="19" id="GNT-x8-vUO"/>
                             <constraint firstAttribute="height" constant="19" id="RF1-I0-HcN"/>
                         </constraints>
+                        <animations/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSTrashEmpty" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V8G-G0-9tg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -158,6 +169,7 @@
                     <constraint firstItem="sYV-ro-Pzb" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="vI5-oX-gfR"/>
                     <constraint firstItem="ITQ-wl-zZE" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="7" id="yJe-fz-5pW"/>
                 </constraints>
+                <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
