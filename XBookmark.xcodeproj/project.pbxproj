@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D17523FA1BDE60D900533192 /* DevToolsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523F91BDE60D800533192 /* DevToolsCore.framework */; };
+		D17523FC1BDE60FA00533192 /* IDEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523FB1BDE60F900533192 /* IDEFoundation.framework */; };
+		D17523FE1BDE610A00533192 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523FD1BDE610900533192 /* IDEKit.framework */; };
+		D17524001BDE612900533192 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523FF1BDE612800533192 /* Cocoa.framework */; };
+		D17524021BDE614300533192 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17524011BDE614100533192 /* DVTFoundation.framework */; };
+		D17524041BDE615100533192 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17524031BDE615000533192 /* DVTKit.framework */; };
 		D1B081091BB5B471007B4821 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B081081BB5B471007B4821 /* AppKit.framework */; settings = {ASSET_TAGS = (); }; };
 		D1B0810B1BB5B471007B4821 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B0810A1BB5B471007B4821 /* Foundation.framework */; settings = {ASSET_TAGS = (); }; };
 		D1B0810F1BB5B471007B4821 /* XBookmark.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D1B0810E1BB5B471007B4821 /* XBookmark.xcscheme */; };
@@ -19,6 +25,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D149A46A1BDE5A720009F581 /* DVTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFoundation.h; sourceTree = "<group>"; };
+		D149A46B1BDE5A720009F581 /* DVTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTKit.h; sourceTree = "<group>"; };
+		D149A46C1BDE5A720009F581 /* IDEFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFoundation.h; sourceTree = "<group>"; };
+		D149A46D1BDE5A720009F581 /* IDEKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEKit.h; sourceTree = "<group>"; };
+		D149A46E1BDE5A720009F581 /* IDESourceEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDESourceEditor.h; sourceTree = "<group>"; };
+		D17523F91BDE60D800533192 /* DevToolsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DevToolsCore.framework; path = ../../../../Applications/Xcode.app/Contents/OtherFrameworks/DevToolsCore.framework; sourceTree = "<group>"; };
+		D17523FB1BDE60F900533192 /* IDEFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEFoundation.framework; sourceTree = "<group>"; };
+		D17523FD1BDE610900533192 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
+		D17523FF1BDE612800533192 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D17524011BDE614100533192 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
+		D17524031BDE615000533192 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework; sourceTree = "<group>"; };
 		D1B081051BB5B471007B4821 /* XBookmark.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XBookmark.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B081081BB5B471007B4821 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		D1B0810A1BB5B471007B4821 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -43,14 +60,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17523FA1BDE60D900533192 /* DevToolsCore.framework in Frameworks */,
 				D1B081091BB5B471007B4821 /* AppKit.framework in Frameworks */,
 				D1B0810B1BB5B471007B4821 /* Foundation.framework in Frameworks */,
+				D17523FC1BDE60FA00533192 /* IDEFoundation.framework in Frameworks */,
+				D17523FE1BDE610A00533192 /* IDEKit.framework in Frameworks */,
+				D17524001BDE612900533192 /* Cocoa.framework in Frameworks */,
+				D17524021BDE614300533192 /* DVTFoundation.framework in Frameworks */,
+				D17524041BDE615100533192 /* DVTKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D149A4691BDE5A720009F581 /* XcodeHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				D149A46A1BDE5A720009F581 /* DVTFoundation.h */,
+				D149A46B1BDE5A720009F581 /* DVTKit.h */,
+				D149A46C1BDE5A720009F581 /* IDEFoundation.h */,
+				D149A46D1BDE5A720009F581 /* IDEKit.h */,
+				D149A46E1BDE5A720009F581 /* IDESourceEditor.h */,
+			);
+			path = XcodeHeaders;
+			sourceTree = "<group>";
+		};
 		D1B080FC1BB5B471007B4821 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +107,12 @@
 		D1B081071BB5B471007B4821 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D17524031BDE615000533192 /* DVTKit.framework */,
+				D17524011BDE614100533192 /* DVTFoundation.framework */,
+				D17523FF1BDE612800533192 /* Cocoa.framework */,
+				D17523FD1BDE610900533192 /* IDEKit.framework */,
+				D17523FB1BDE60F900533192 /* IDEFoundation.framework */,
+				D17523F91BDE60D800533192 /* DevToolsCore.framework */,
 				D1B081081BB5B471007B4821 /* AppKit.framework */,
 				D1B0810A1BB5B471007B4821 /* Foundation.framework */,
 			);
@@ -81,6 +122,7 @@
 		D1B0810C1BB5B471007B4821 /* XBookmark */ = {
 			isa = PBXGroup;
 			children = (
+				D149A4691BDE5A720009F581 /* XcodeHeaders */,
 				D1B081101BB5B471007B4821 /* XBookmark.h */,
 				D1B081111BB5B471007B4821 /* XBookmark.m */,
 				D1B081131BB5B471007B4821 /* NSObject_Extension.h */,
@@ -264,6 +306,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Applications/Xcode.app/Contents/OtherFrameworks,
+					/Applications/Xcode.app/Contents/Frameworks,
+					/Applications/Xcode.app/Contents/SharedFrameworks,
+				);
 				INFOPLIST_FILE = XBookmark/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -279,6 +326,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Applications/Xcode.app/Contents/OtherFrameworks,
+					/Applications/Xcode.app/Contents/Frameworks,
+					/Applications/Xcode.app/Contents/SharedFrameworks,
+				);
 				INFOPLIST_FILE = XBookmark/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
