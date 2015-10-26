@@ -28,7 +28,7 @@ Now, you can see menus in the `Edit` Menu.
 - type `Command + F3` to jump to next bookmark.
 - type `Ctrl + Shift + F3` to jump to previous bookmark.
 
-# TODO
+# Plan for next version
 - Bookmark Comment
 - Toggle Bookmark with Mnemonic
 
