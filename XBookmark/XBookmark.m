@@ -55,7 +55,7 @@
     //removeObserver
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
     
-	unichar cf3 = NSF5FunctionKey;
+	unichar cf3 = NSF3FunctionKey;
 	NSString *f3 = [NSString stringWithCharacters:&cf3 length:1];
     
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
