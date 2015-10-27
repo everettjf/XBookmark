@@ -55,7 +55,7 @@
     //removeObserver
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
     
-	unichar cf3 = NSF3FunctionKey;
+	unichar cf3 = NSF5FunctionKey;
 	NSString *f3 = [NSString stringWithCharacters:&cf3 length:1];
     
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
@@ -102,6 +102,9 @@
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
     IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
+    if ([editor isKindOfClass:[IDEEditorEmpty class]]) {
+        return;
+    }
     NSTextView* textView = editor.textView;
     if (nil == textView)
         return;
