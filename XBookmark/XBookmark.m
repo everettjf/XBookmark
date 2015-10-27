@@ -102,6 +102,9 @@
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
     IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
+    if ([editor isKindOfClass:[IDEEditorEmpty class]]) {
+        return;
+    }
     NSTextView* textView = editor.textView;
     if (nil == textView)
         return;
