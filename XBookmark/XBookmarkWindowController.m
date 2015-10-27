@@ -107,7 +107,7 @@
 }
 - (IBAction)helpClicked:(id)sender {
     NSString *githubURLString = @"http://github.com/everettjf/XBookmark";
-    NSString *versionString = @"0.1.0";
+    NSString *versionString = @"0.2.0";
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"OK"];
