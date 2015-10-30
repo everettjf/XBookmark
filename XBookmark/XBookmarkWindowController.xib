@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="XBookmarkWindowController">
@@ -14,9 +14,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="XBookmark" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="307" height="352"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="200" height="200"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="307" height="352"/>
@@ -156,6 +155,21 @@
                             <action selector="clearBookmarkClicked:" target="-2" id="rql-9q-aDF"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S4j-PF-bXo">
+                        <rect key="frame" x="34" y="9" width="19" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="S9o-9B-2MP"/>
+                            <constraint firstAttribute="width" constant="19" id="khl-3a-VwL"/>
+                        </constraints>
+                        <animations/>
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSPreferencesGeneral" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tML-fe-mVI">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="showPreferencesClicked:" target="-2" id="QUE-Vu-bjc"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="ITQ-wl-zZE" secondAttribute="bottom" constant="8" id="HFL-R4-Vrw"/>
@@ -163,11 +177,13 @@
                     <constraint firstAttribute="trailing" secondItem="sYV-ro-Pzb" secondAttribute="trailing" constant="-1" id="IDJ-kp-Qcb"/>
                     <constraint firstAttribute="bottom" secondItem="9jw-2w-ASz" secondAttribute="bottom" constant="10" id="NsE-xY-9to"/>
                     <constraint firstItem="sYV-ro-Pzb" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="VNe-fh-C3U"/>
+                    <constraint firstAttribute="bottom" secondItem="S4j-PF-bXo" secondAttribute="bottom" constant="10" id="a3Y-s6-5Ln"/>
                     <constraint firstAttribute="bottom" secondItem="sYV-ro-Pzb" secondAttribute="bottom" constant="37" id="hAP-QG-drh"/>
                     <constraint firstAttribute="trailing" secondItem="neg-vI-q3e" secondAttribute="trailing" constant="6" id="mkS-IZ-ban"/>
                     <constraint firstAttribute="bottom" secondItem="neg-vI-q3e" secondAttribute="bottom" constant="10" id="ozh-ku-KUr"/>
                     <constraint firstItem="sYV-ro-Pzb" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="vI5-oX-gfR"/>
                     <constraint firstItem="ITQ-wl-zZE" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="7" id="yJe-fz-5pW"/>
+                    <constraint firstItem="S4j-PF-bXo" firstAttribute="leading" secondItem="ITQ-wl-zZE" secondAttribute="trailing" constant="6" id="zYe-8k-iJ8"/>
                 </constraints>
                 <animations/>
             </view>
@@ -178,6 +194,7 @@
         </window>
     </objects>
     <resources>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSTrashEmpty" width="32" height="32"/>
     </resources>
