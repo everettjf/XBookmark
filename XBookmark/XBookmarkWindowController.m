@@ -137,8 +137,7 @@
 }
 - (IBAction)showPreferencesClicked:(id)sender {
     self.preferencesWindowController = [[XBookmarkPreferencesWindowController alloc]init];
-    [self.preferencesWindowController loadWindow];
-    [self.preferencesWindowController showWindow:sender];
+    [self.preferencesWindowController.window makeKeyAndOrderFront:sender];
 }
 
 @end

@@ -6,6 +6,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="XBookmarkPreferencesWindowController">
             <connections>
+                <outlet property="nextShortcutView" destination="JLx-zc-ibN" id="oTK-wu-nNl"/>
+                <outlet property="prevShortcutView" destination="7rN-v6-Ooq" id="tzo-An-hWc"/>
+                <outlet property="showShortcutView" destination="WRl-eW-fu8" id="XrU-J9-24M"/>
                 <outlet property="toggleShortcutView" destination="3nr-4B-3wP" id="4ij-uU-xce"/>
             </connections>
         </customObject>
@@ -76,7 +79,7 @@
                 </subviews>
                 <animations/>
             </view>
-            <point key="canvasLocation" x="252.5" y="269"/>
+            <point key="canvasLocation" x="141.5" y="174"/>
         </window>
     </objects>
 </document>

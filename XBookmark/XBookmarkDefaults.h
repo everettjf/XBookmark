@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Shortcut.h"
 
+extern NSString * const XBookmarkDefaultsShortcutToggle;
+extern NSString * const XBookmarkDefaultsShortcutNext;
+extern NSString * const XBookmarkDefaultsShortcutPrev;
+extern NSString * const XBookmarkDefaultsShortcutShow;
+
 @interface XBookmarkDefaults : NSObject
 
 +(MASShortcut*)defaultShortcutToggle;

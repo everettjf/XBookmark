@@ -8,6 +8,11 @@
 
 #import "XBookmarkDefaults.h"
 
+NSString * const XBookmarkDefaultsShortcutToggle = @"XBookmarkDefaultsShortcutToggle";
+NSString * const XBookmarkDefaultsShortcutNext = @"XBookmarkDefaultsShortcutNext";
+NSString * const XBookmarkDefaultsShortcutPrev = @"XBookmarkDefaultsShortcutPrev";
+NSString * const XBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShortcutShow";
+
 @implementation XBookmarkDefaults
 
 +(MASShortcut *)defaultShortcutToggle{

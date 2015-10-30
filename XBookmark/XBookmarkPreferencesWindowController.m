@@ -8,9 +8,13 @@
 
 #import "XBookmarkPreferencesWindowController.h"
 #import "Shortcut.h"
+#import "XBookmarkDefaults.h"
 
 @interface XBookmarkPreferencesWindowController ()
 @property (weak) IBOutlet MASShortcutView *toggleShortcutView;
+@property (weak) IBOutlet MASShortcutView *nextShortcutView;
+@property (weak) IBOutlet MASShortcutView *prevShortcutView;
+@property (weak) IBOutlet MASShortcutView *showShortcutView;
 
 @end
 
@@ -23,7 +27,10 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self.toggleShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutToggle];
+    [self.nextShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutNext];
+    [self.prevShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutPrev];
+    [self.showShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutShow];
     
 }
 
