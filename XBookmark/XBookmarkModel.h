@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface XBookmarkEntity : NSObject<NSCoding>
 @property (nonatomic,strong) NSString *sourcePath;
 @property (nonatomic,assign) NSUInteger lineNumber;

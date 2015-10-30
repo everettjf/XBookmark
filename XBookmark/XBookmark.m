@@ -7,7 +7,7 @@
 //
 
 #import "XBookmark.h"
-#import "XcodeUtil.h"
+#import "XBookmarkUtil.h"
 #import "XBookmarkModel.h"
 #import "XBookmarkWindowController.h"
 
@@ -101,7 +101,7 @@
 {
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
-    IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
+    IDESourceCodeEditor* editor = [XBookmarkUtil currentEditor];
     if ([editor isKindOfClass:[IDEEditorEmpty class]]) {
         return;
     }
@@ -137,7 +137,7 @@
     }
     
     XBookmarkEntity *bookmark = [model.bookmarks objectAtIndex:nextIndex];
-    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    [XBookmarkUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
     self.currentBookmarkIndex = nextIndex;
 }
 - (void)previousBookmark{
@@ -157,7 +157,7 @@
     }
     
     XBookmarkEntity *bookmark = [model.bookmarks objectAtIndex:previousIndex];
-    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    [XBookmarkUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
     self.currentBookmarkIndex = previousIndex;
 }
 - (void)showBookmarks{
@@ -168,12 +168,12 @@
     }else{
         if(self.windowController == nil){
             // Remember the current IDE workspace window controller
-            [XcodeUtil currentIDEWorkspaceWindowController];
+            [XBookmarkUtil currentIDEWorkspaceWindowController];
             
             self.windowController = [[XBookmarkWindowController alloc]initWithWindowNibName:@"XBookmarkWindowController"];
         }
         
-        self.windowController.window.title = [[XcodeUtil currentWorkspaceDocument].displayName stringByDeletingLastPathComponent];
+        self.windowController.window.title = [[XBookmarkUtil currentWorkspaceDocument].displayName stringByDeletingLastPathComponent];
         [self.windowController.window makeKeyAndOrderFront:nil];
         [self.windowController refreshBookmarks];
     }

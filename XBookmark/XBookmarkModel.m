@@ -7,7 +7,7 @@
 //
 
 #import "XBookmarkModel.h"
-#import "XcodeUtil.h"
+#import "XBookmarkUtil.h"
 
 @implementation XBookmarkEntity
 
@@ -131,7 +131,7 @@
 
 -(NSString*)currentWorkspaceSettingFilePath{
     static NSString *cachedWorkspaceFilePath = nil;
-    NSString *workspaceFilePath = [XcodeUtil currentWorkspaceFilePath];
+    NSString *workspaceFilePath = [XBookmarkUtil currentWorkspaceFilePath];
     if(workspaceFilePath == nil){
         workspaceFilePath = cachedWorkspaceFilePath;
     }else{

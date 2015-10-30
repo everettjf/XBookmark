@@ -13,13 +13,13 @@
 #import "IDESourceEditor.h"
 
 // Helper globals
-@interface XcodeGlobal : NSObject
-+(XcodeGlobal*)shared;
+@interface XBookmarkGlobal : NSObject
++(XBookmarkGlobal*)shared;
 @property (nonatomic,weak) IDEWorkspaceWindowController *mainWorkspaceWindowController;
 @end
 
 
-@interface XcodeUtil : NSObject
+@interface XBookmarkUtil : NSObject
 + (IDEWorkspaceDocument*)currentWorkspaceDocument;
 + (IDEWorkspaceTabController*)tabController;
 + (IDESourceCodeEditor*)currentEditor;

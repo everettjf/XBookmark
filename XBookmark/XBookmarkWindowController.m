@@ -8,7 +8,7 @@
 
 #import "XBookmarkWindowController.h"
 #import "XBookmarkModel.h"
-#import "XcodeUtil.h"
+#import "XBookmarkUtil.h"
 #import "XBookmarkPreferencesWindowController.h"
 
 @implementation XBookmarkTableCellView
@@ -133,7 +133,7 @@
         return;
     
     // locate bookmark
-    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    [XBookmarkUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
 }
 - (IBAction)showPreferencesClicked:(id)sender {
     self.preferencesWindowController = [[XBookmarkPreferencesWindowController alloc]init];

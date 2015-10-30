@@ -29,7 +29,7 @@
 		D1B0810F1BB5B471007B4821 /* XBookmark.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D1B0810E1BB5B471007B4821 /* XBookmark.xcscheme */; };
 		D1B081121BB5B471007B4821 /* XBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B081111BB5B471007B4821 /* XBookmark.m */; };
 		D1B081151BB5B471007B4821 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B081141BB5B471007B4821 /* NSObject_Extension.m */; };
-		D1B0811E1BB9A6B0007B4821 /* XcodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0811D1BB9A6B0007B4821 /* XcodeUtil.m */; };
+		D1B0811E1BB9A6B0007B4821 /* XBookmarkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0811D1BB9A6B0007B4821 /* XBookmarkUtil.m */; };
 		D1E7A73F1BBE90A800E7AC2B /* XBookmarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E7A73E1BBE90A800E7AC2B /* XBookmarkModel.m */; };
 		D1E7A7431BBECB4600E7AC2B /* XBookmarkWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E7A7411BBECB4600E7AC2B /* XBookmarkWindowController.m */; };
 		D1E7A7441BBECB4600E7AC2B /* XBookmarkWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E7A7421BBECB4600E7AC2B /* XBookmarkWindowController.xib */; };
@@ -80,8 +80,8 @@
 		D1B081131BB5B471007B4821 /* NSObject_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSObject_Extension.h; sourceTree = "<group>"; };
 		D1B081141BB5B471007B4821 /* NSObject_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSObject_Extension.m; sourceTree = "<group>"; };
 		D1B081161BB5B471007B4821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1B0811C1BB9A6B0007B4821 /* XcodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeUtil.h; sourceTree = "<group>"; };
-		D1B0811D1BB9A6B0007B4821 /* XcodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeUtil.m; sourceTree = "<group>"; };
+		D1B0811C1BB9A6B0007B4821 /* XBookmarkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkUtil.h; sourceTree = "<group>"; };
+		D1B0811D1BB9A6B0007B4821 /* XBookmarkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkUtil.m; sourceTree = "<group>"; };
 		D1E7A73D1BBE90A800E7AC2B /* XBookmarkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkModel.h; sourceTree = "<group>"; };
 		D1E7A73E1BBE90A800E7AC2B /* XBookmarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkModel.m; sourceTree = "<group>"; };
 		D1E7A7401BBECB4600E7AC2B /* XBookmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkWindowController.h; sourceTree = "<group>"; };
@@ -192,8 +192,8 @@
 				D1B081141BB5B471007B4821 /* NSObject_Extension.m */,
 				D1B081161BB5B471007B4821 /* Info.plist */,
 				D1B0810D1BB5B471007B4821 /* Supporting Files */,
-				D1B0811C1BB9A6B0007B4821 /* XcodeUtil.h */,
-				D1B0811D1BB9A6B0007B4821 /* XcodeUtil.m */,
+				D1B0811C1BB9A6B0007B4821 /* XBookmarkUtil.h */,
+				D1B0811D1BB9A6B0007B4821 /* XBookmarkUtil.m */,
 				D1E7A73D1BBE90A800E7AC2B /* XBookmarkModel.h */,
 				D1E7A73E1BBE90A800E7AC2B /* XBookmarkModel.m */,
 				D1E7A7401BBECB4600E7AC2B /* XBookmarkWindowController.h */,
@@ -294,7 +294,7 @@
 				D182A66A1BE3C29300AC46E3 /* MASShortcutView+Bindings.m in Sources */,
 				D182A6631BE3C29300AC46E3 /* MASShortcut.m in Sources */,
 				D1E7A7431BBECB4600E7AC2B /* XBookmarkWindowController.m in Sources */,
-				D1B0811E1BB9A6B0007B4821 /* XcodeUtil.m in Sources */,
+				D1B0811E1BB9A6B0007B4821 /* XBookmarkUtil.m in Sources */,
 				D182A65E1BE3C29300AC46E3 /* MASDictionaryTransformer.m in Sources */,
 				D182A6661BE3C29300AC46E3 /* MASShortcutMonitor.m in Sources */,
 				D182A6691BE3C29300AC46E3 /* MASShortcutValidator.m in Sources */,
