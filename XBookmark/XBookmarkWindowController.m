@@ -9,15 +9,15 @@
 #import "XBookmarkWindowController.h"
 #import "XBookmarkModel.h"
 #import "XcodeUtil.h"
+#import "XBookmarkPreferencesWindowController.h"
 
 @implementation XBookmarkTableCellView
-
-
 @end
 
 @interface XBookmarkWindowController () <NSTableViewDelegate,NSTableViewDataSource>
 @property (weak) IBOutlet NSTableView *bookmarksTableView;
 @property (nonatomic,strong) NSArray *bookmarks;
+@property (nonatomic,strong) XBookmarkPreferencesWindowController *preferencesWindowController;
 
 @end
 
@@ -134,6 +134,17 @@
     
     // locate bookmark
     [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+}
+- (IBAction)showPreferencesClicked:(id)sender {
+    self.preferencesWindowController = [[XBookmarkPreferencesWindowController alloc]init];
+    [self.preferencesWindowController loadWindow];
+    
+//    NSRect windowFrame = self.window.frame;
+//    NSRect prefFrame = self.preferencesWindowController.window.frame;
+//    prefFrame.origin = NSMakePoint(windowFrame.origin.x, windowFrame.origin.y);
+//    [self.preferencesWindowController.window setFrame:prefFrame display:NO];
+    
+    [self.preferencesWindowController showWindow:sender];
 }
 
 @end

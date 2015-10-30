@@ -13,6 +13,8 @@
 		D17524001BDE612900533192 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523FF1BDE612800533192 /* Cocoa.framework */; };
 		D17524021BDE614300533192 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17524011BDE614100533192 /* DVTFoundation.framework */; };
 		D17524041BDE615100533192 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17524031BDE615000533192 /* DVTKit.framework */; };
+		D182A6401BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A63E1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m */; };
+		D182A6411BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D182A63F1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib */; };
 		D1B081091BB5B471007B4821 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B081081BB5B471007B4821 /* AppKit.framework */; };
 		D1B0810B1BB5B471007B4821 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B0810A1BB5B471007B4821 /* Foundation.framework */; };
 		D1B0810F1BB5B471007B4821 /* XBookmark.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D1B0810E1BB5B471007B4821 /* XBookmark.xcscheme */; };
@@ -36,6 +38,9 @@
 		D17523FF1BDE612800533192 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D17524011BDE614100533192 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
 		D17524031BDE615000533192 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework; sourceTree = "<group>"; };
+		D182A63D1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkPreferencesWindowController.h; sourceTree = "<group>"; };
+		D182A63E1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkPreferencesWindowController.m; sourceTree = "<group>"; };
+		D182A63F1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBookmarkPreferencesWindowController.xib; sourceTree = "<group>"; };
 		D1B081051BB5B471007B4821 /* XBookmark.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XBookmark.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B081081BB5B471007B4821 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		D1B0810A1BB5B471007B4821 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -136,6 +141,9 @@
 				D1E7A7401BBECB4600E7AC2B /* XBookmarkWindowController.h */,
 				D1E7A7411BBECB4600E7AC2B /* XBookmarkWindowController.m */,
 				D1E7A7421BBECB4600E7AC2B /* XBookmarkWindowController.xib */,
+				D182A63D1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.h */,
+				D182A63E1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m */,
+				D182A63F1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib */,
 			);
 			path = XBookmark;
 			sourceTree = "<group>";
@@ -205,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1E7A7441BBECB4600E7AC2B /* XBookmarkWindowController.xib in Resources */,
+				D182A6411BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib in Resources */,
 				D1B0810F1BB5B471007B4821 /* XBookmark.xcscheme in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +230,7 @@
 				D1E7A73F1BBE90A800E7AC2B /* XBookmarkModel.m in Sources */,
 				D1E7A7431BBECB4600E7AC2B /* XBookmarkWindowController.m in Sources */,
 				D1B0811E1BB9A6B0007B4821 /* XcodeUtil.m in Sources */,
+				D182A6401BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
