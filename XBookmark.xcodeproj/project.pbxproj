@@ -24,6 +24,7 @@
 		D182A6691BE3C29300AC46E3 /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6571BE3C29300AC46E3 /* MASShortcutValidator.m */; };
 		D182A66A1BE3C29300AC46E3 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6591BE3C29300AC46E3 /* MASShortcutView+Bindings.m */; };
 		D182A66B1BE3C29300AC46E3 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A65B1BE3C29300AC46E3 /* MASShortcutView.m */; };
+		D182A6741BE3CF9900AC46E3 /* XBookmarkDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6731BE3CF9900AC46E3 /* XBookmarkDefaults.m */; };
 		D1B081091BB5B471007B4821 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B081081BB5B471007B4821 /* AppKit.framework */; };
 		D1B0810B1BB5B471007B4821 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B0810A1BB5B471007B4821 /* Foundation.framework */; };
 		D1B0810F1BB5B471007B4821 /* XBookmark.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D1B0810E1BB5B471007B4821 /* XBookmark.xcscheme */; };
@@ -71,6 +72,8 @@
 		D182A65B1BE3C29300AC46E3 /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutView.m; sourceTree = "<group>"; };
 		D182A65D1BE3C29300AC46E3 /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
 		D182A66C1BE3C32700AC46E3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D182A6721BE3CF9900AC46E3 /* XBookmarkDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkDefaults.h; sourceTree = "<group>"; };
+		D182A6731BE3CF9900AC46E3 /* XBookmarkDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkDefaults.m; sourceTree = "<group>"; };
 		D1B081051BB5B471007B4821 /* XBookmark.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XBookmark.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B081081BB5B471007B4821 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		D1B0810A1BB5B471007B4821 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -202,6 +205,8 @@
 				D182A63D1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.h */,
 				D182A63E1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m */,
 				D182A63F1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib */,
+				D182A6721BE3CF9900AC46E3 /* XBookmarkDefaults.h */,
+				D182A6731BE3CF9900AC46E3 /* XBookmarkDefaults.m */,
 			);
 			path = XBookmark;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				D1B081121BB5B471007B4821 /* XBookmark.m in Sources */,
 				D182A6601BE3C29300AC46E3 /* MASHotKey.m in Sources */,
 				D182A6641BE3C29300AC46E3 /* MASShortcutBinder.m in Sources */,
+				D182A6741BE3CF9900AC46E3 /* XBookmarkDefaults.m in Sources */,
 				D1B081151BB5B471007B4821 /* NSObject_Extension.m in Sources */,
 				D182A6621BE3C29300AC46E3 /* MASLocalization.m in Sources */,
 				D1E7A73F1BBE90A800E7AC2B /* XBookmarkModel.m in Sources */,

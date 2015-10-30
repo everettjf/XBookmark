@@ -10,6 +10,7 @@
 #import "XBookmarkUtil.h"
 #import "XBookmarkModel.h"
 #import "XBookmarkWindowController.h"
+#import "XBookmarkDefaults.h"
 
 @interface XBookmark()
 
@@ -55,9 +56,6 @@
     //removeObserver
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
     
-	unichar cf3 = NSF3FunctionKey;
-	NSString *f3 = [NSString stringWithCharacters:&cf3 length:1];
-    
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
@@ -67,25 +65,34 @@
         mainMenu.submenu = submenu;
         
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:f3];
-            [actionMenuItem setKeyEquivalentModifierMask:0];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutToggle;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
         }
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark) keyEquivalent:f3];
-            [actionMenuItem setKeyEquivalentModifierMask:NSCommandKeyMask];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutNext;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
         }
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Previous Bookmark" action:@selector(previousBookmark) keyEquivalent:f3];
-            [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask | NSControlKeyMask];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutPrev;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Previous Bookmark" action:@selector(previousBookmark)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
         }
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks) keyEquivalent:f3];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutShow;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
