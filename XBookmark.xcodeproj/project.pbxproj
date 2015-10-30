@@ -15,6 +15,15 @@
 		D17524041BDE615100533192 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17524031BDE615000533192 /* DVTKit.framework */; };
 		D182A6401BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A63E1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m */; };
 		D182A6411BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D182A63F1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib */; };
+		D182A65E1BE3C29300AC46E3 /* MASDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6441BE3C29300AC46E3 /* MASDictionaryTransformer.m */; };
+		D182A6601BE3C29300AC46E3 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6471BE3C29300AC46E3 /* MASHotKey.m */; };
+		D182A6621BE3C29300AC46E3 /* MASLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A64B1BE3C29300AC46E3 /* MASLocalization.m */; };
+		D182A6631BE3C29300AC46E3 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A64D1BE3C29300AC46E3 /* MASShortcut.m */; };
+		D182A6641BE3C29300AC46E3 /* MASShortcutBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6501BE3C29300AC46E3 /* MASShortcutBinder.m */; };
+		D182A6661BE3C29300AC46E3 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6531BE3C29300AC46E3 /* MASShortcutMonitor.m */; };
+		D182A6691BE3C29300AC46E3 /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6571BE3C29300AC46E3 /* MASShortcutValidator.m */; };
+		D182A66A1BE3C29300AC46E3 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6591BE3C29300AC46E3 /* MASShortcutView+Bindings.m */; };
+		D182A66B1BE3C29300AC46E3 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A65B1BE3C29300AC46E3 /* MASShortcutView.m */; };
 		D1B081091BB5B471007B4821 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B081081BB5B471007B4821 /* AppKit.framework */; };
 		D1B0810B1BB5B471007B4821 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B0810A1BB5B471007B4821 /* Foundation.framework */; };
 		D1B0810F1BB5B471007B4821 /* XBookmark.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D1B0810E1BB5B471007B4821 /* XBookmark.xcscheme */; };
@@ -41,6 +50,27 @@
 		D182A63D1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkPreferencesWindowController.h; sourceTree = "<group>"; };
 		D182A63E1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkPreferencesWindowController.m; sourceTree = "<group>"; };
 		D182A63F1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBookmarkPreferencesWindowController.xib; sourceTree = "<group>"; };
+		D182A6431BE3C29300AC46E3 /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASDictionaryTransformer.h; sourceTree = "<group>"; };
+		D182A6441BE3C29300AC46E3 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASDictionaryTransformer.m; sourceTree = "<group>"; };
+		D182A6461BE3C29300AC46E3 /* MASHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASHotKey.h; sourceTree = "<group>"; };
+		D182A6471BE3C29300AC46E3 /* MASHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASHotKey.m; sourceTree = "<group>"; };
+		D182A6491BE3C29300AC46E3 /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASKeyCodes.h; sourceTree = "<group>"; };
+		D182A64A1BE3C29300AC46E3 /* MASLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLocalization.h; sourceTree = "<group>"; };
+		D182A64B1BE3C29300AC46E3 /* MASLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLocalization.m; sourceTree = "<group>"; };
+		D182A64C1BE3C29300AC46E3 /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcut.h; sourceTree = "<group>"; };
+		D182A64D1BE3C29300AC46E3 /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcut.m; sourceTree = "<group>"; };
+		D182A64F1BE3C29300AC46E3 /* MASShortcutBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutBinder.h; sourceTree = "<group>"; };
+		D182A6501BE3C29300AC46E3 /* MASShortcutBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutBinder.m; sourceTree = "<group>"; };
+		D182A6521BE3C29300AC46E3 /* MASShortcutMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutMonitor.h; sourceTree = "<group>"; };
+		D182A6531BE3C29300AC46E3 /* MASShortcutMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutMonitor.m; sourceTree = "<group>"; };
+		D182A6561BE3C29300AC46E3 /* MASShortcutValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutValidator.h; sourceTree = "<group>"; };
+		D182A6571BE3C29300AC46E3 /* MASShortcutValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutValidator.m; sourceTree = "<group>"; };
+		D182A6581BE3C29300AC46E3 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
+		D182A6591BE3C29300AC46E3 /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
+		D182A65A1BE3C29300AC46E3 /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutView.h; sourceTree = "<group>"; };
+		D182A65B1BE3C29300AC46E3 /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutView.m; sourceTree = "<group>"; };
+		D182A65D1BE3C29300AC46E3 /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
+		D182A66C1BE3C32700AC46E3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D1B081051BB5B471007B4821 /* XBookmark.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XBookmark.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B081081BB5B471007B4821 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		D1B0810A1BB5B471007B4821 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -91,6 +121,33 @@
 			path = XcodeHeaders;
 			sourceTree = "<group>";
 		};
+		D182A6421BE3C29300AC46E3 /* MASShortcut */ = {
+			isa = PBXGroup;
+			children = (
+				D182A6431BE3C29300AC46E3 /* MASDictionaryTransformer.h */,
+				D182A6441BE3C29300AC46E3 /* MASDictionaryTransformer.m */,
+				D182A6461BE3C29300AC46E3 /* MASHotKey.h */,
+				D182A6471BE3C29300AC46E3 /* MASHotKey.m */,
+				D182A6491BE3C29300AC46E3 /* MASKeyCodes.h */,
+				D182A64A1BE3C29300AC46E3 /* MASLocalization.h */,
+				D182A64B1BE3C29300AC46E3 /* MASLocalization.m */,
+				D182A64C1BE3C29300AC46E3 /* MASShortcut.h */,
+				D182A64D1BE3C29300AC46E3 /* MASShortcut.m */,
+				D182A64F1BE3C29300AC46E3 /* MASShortcutBinder.h */,
+				D182A6501BE3C29300AC46E3 /* MASShortcutBinder.m */,
+				D182A6521BE3C29300AC46E3 /* MASShortcutMonitor.h */,
+				D182A6531BE3C29300AC46E3 /* MASShortcutMonitor.m */,
+				D182A6561BE3C29300AC46E3 /* MASShortcutValidator.h */,
+				D182A6571BE3C29300AC46E3 /* MASShortcutValidator.m */,
+				D182A6581BE3C29300AC46E3 /* MASShortcutView+Bindings.h */,
+				D182A6591BE3C29300AC46E3 /* MASShortcutView+Bindings.m */,
+				D182A65A1BE3C29300AC46E3 /* MASShortcutView.h */,
+				D182A65B1BE3C29300AC46E3 /* MASShortcutView.m */,
+				D182A65D1BE3C29300AC46E3 /* Shortcut.h */,
+			);
+			path = MASShortcut;
+			sourceTree = "<group>";
+		};
 		D1B080FC1BB5B471007B4821 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +184,7 @@
 		D1B0810C1BB5B471007B4821 /* XBookmark */ = {
 			isa = PBXGroup;
 			children = (
+				D182A6421BE3C29300AC46E3 /* MASShortcut */,
 				D149A4691BDE5A720009F581 /* XcodeHeaders */,
 				D1B081101BB5B471007B4821 /* XBookmark.h */,
 				D1B081111BB5B471007B4821 /* XBookmark.m */,
@@ -152,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				D1B0810E1BB5B471007B4821 /* XBookmark.xcscheme */,
+				D182A66C1BE3C32700AC46E3 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -225,11 +284,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D182A66B1BE3C29300AC46E3 /* MASShortcutView.m in Sources */,
 				D1B081121BB5B471007B4821 /* XBookmark.m in Sources */,
+				D182A6601BE3C29300AC46E3 /* MASHotKey.m in Sources */,
+				D182A6641BE3C29300AC46E3 /* MASShortcutBinder.m in Sources */,
 				D1B081151BB5B471007B4821 /* NSObject_Extension.m in Sources */,
+				D182A6621BE3C29300AC46E3 /* MASLocalization.m in Sources */,
 				D1E7A73F1BBE90A800E7AC2B /* XBookmarkModel.m in Sources */,
+				D182A66A1BE3C29300AC46E3 /* MASShortcutView+Bindings.m in Sources */,
+				D182A6631BE3C29300AC46E3 /* MASShortcut.m in Sources */,
 				D1E7A7431BBECB4600E7AC2B /* XBookmarkWindowController.m in Sources */,
 				D1B0811E1BB9A6B0007B4821 /* XcodeUtil.m in Sources */,
+				D182A65E1BE3C29300AC46E3 /* MASDictionaryTransformer.m in Sources */,
+				D182A6661BE3C29300AC46E3 /* MASShortcutMonitor.m in Sources */,
+				D182A6691BE3C29300AC46E3 /* MASShortcutValidator.m in Sources */,
 				D182A6401BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +389,8 @@
 					/Applications/Xcode.app/Contents/Frameworks,
 					/Applications/Xcode.app/Contents/SharedFrameworks,
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = XBookmark/PrefixHeader.pch;
 				INFOPLIST_FILE = XBookmark/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -341,6 +411,8 @@
 					/Applications/Xcode.app/Contents/Frameworks,
 					/Applications/Xcode.app/Contents/SharedFrameworks,
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = XBookmark/PrefixHeader.pch;
 				INFOPLIST_FILE = XBookmark/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;

@@ -138,12 +138,6 @@
 - (IBAction)showPreferencesClicked:(id)sender {
     self.preferencesWindowController = [[XBookmarkPreferencesWindowController alloc]init];
     [self.preferencesWindowController loadWindow];
-    
-//    NSRect windowFrame = self.window.frame;
-//    NSRect prefFrame = self.preferencesWindowController.window.frame;
-//    prefFrame.origin = NSMakePoint(windowFrame.origin.x, windowFrame.origin.y);
-//    [self.preferencesWindowController.window setFrame:prefFrame display:NO];
-    
     [self.preferencesWindowController showWindow:sender];
 }
 
