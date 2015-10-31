@@ -25,6 +25,8 @@
 		D182A66A1BE3C29300AC46E3 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6591BE3C29300AC46E3 /* MASShortcutView+Bindings.m */; };
 		D182A66B1BE3C29300AC46E3 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A65B1BE3C29300AC46E3 /* MASShortcutView.m */; };
 		D182A6741BE3CF9900AC46E3 /* XBookmarkDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A6731BE3CF9900AC46E3 /* XBookmarkDefaults.m */; };
+		D182A67C1BE49DF300AC46E3 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A67B1BE49DF300AC46E3 /* JRSwizzle.m */; };
+		D182A67F1BE4A0BB00AC46E3 /* DVTTextSidebarView+XBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = D182A67E1BE4A0BB00AC46E3 /* DVTTextSidebarView+XBookmark.m */; };
 		D1B081091BB5B471007B4821 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B081081BB5B471007B4821 /* AppKit.framework */; };
 		D1B0810B1BB5B471007B4821 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B0810A1BB5B471007B4821 /* Foundation.framework */; };
 		D1B0810F1BB5B471007B4821 /* XBookmark.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D1B0810E1BB5B471007B4821 /* XBookmark.xcscheme */; };
@@ -74,6 +76,10 @@
 		D182A66C1BE3C32700AC46E3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D182A6721BE3CF9900AC46E3 /* XBookmarkDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBookmarkDefaults.h; sourceTree = "<group>"; };
 		D182A6731BE3CF9900AC46E3 /* XBookmarkDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBookmarkDefaults.m; sourceTree = "<group>"; };
+		D182A67A1BE49DF300AC46E3 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
+		D182A67B1BE49DF300AC46E3 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
+		D182A67D1BE4A0BB00AC46E3 /* DVTTextSidebarView+XBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTTextSidebarView+XBookmark.h"; sourceTree = "<group>"; };
+		D182A67E1BE4A0BB00AC46E3 /* DVTTextSidebarView+XBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DVTTextSidebarView+XBookmark.m"; sourceTree = "<group>"; };
 		D1B081051BB5B471007B4821 /* XBookmark.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XBookmark.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B081081BB5B471007B4821 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		D1B0810A1BB5B471007B4821 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -151,6 +157,15 @@
 			path = MASShortcut;
 			sourceTree = "<group>";
 		};
+		D182A6791BE49DF300AC46E3 /* JRSwizzle */ = {
+			isa = PBXGroup;
+			children = (
+				D182A67A1BE49DF300AC46E3 /* JRSwizzle.h */,
+				D182A67B1BE49DF300AC46E3 /* JRSwizzle.m */,
+			);
+			path = JRSwizzle;
+			sourceTree = "<group>";
+		};
 		D1B080FC1BB5B471007B4821 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +202,7 @@
 		D1B0810C1BB5B471007B4821 /* XBookmark */ = {
 			isa = PBXGroup;
 			children = (
+				D182A6791BE49DF300AC46E3 /* JRSwizzle */,
 				D182A6421BE3C29300AC46E3 /* MASShortcut */,
 				D149A4691BDE5A720009F581 /* XcodeHeaders */,
 				D1B081101BB5B471007B4821 /* XBookmark.h */,
@@ -207,6 +223,8 @@
 				D182A63F1BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.xib */,
 				D182A6721BE3CF9900AC46E3 /* XBookmarkDefaults.h */,
 				D182A6731BE3CF9900AC46E3 /* XBookmarkDefaults.m */,
+				D182A67D1BE4A0BB00AC46E3 /* DVTTextSidebarView+XBookmark.h */,
+				D182A67E1BE4A0BB00AC46E3 /* DVTTextSidebarView+XBookmark.m */,
 			);
 			path = XBookmark;
 			sourceTree = "<group>";
@@ -301,9 +319,11 @@
 				D182A6631BE3C29300AC46E3 /* MASShortcut.m in Sources */,
 				D1E7A7431BBECB4600E7AC2B /* XBookmarkWindowController.m in Sources */,
 				D1B0811E1BB9A6B0007B4821 /* XBookmarkUtil.m in Sources */,
+				D182A67F1BE4A0BB00AC46E3 /* DVTTextSidebarView+XBookmark.m in Sources */,
 				D182A65E1BE3C29300AC46E3 /* MASDictionaryTransformer.m in Sources */,
 				D182A6661BE3C29300AC46E3 /* MASShortcutMonitor.m in Sources */,
 				D182A6691BE3C29300AC46E3 /* MASShortcutValidator.m in Sources */,
+				D182A67C1BE49DF300AC46E3 /* JRSwizzle.m in Sources */,
 				D182A6401BE3A95200AC46E3 /* XBookmarkPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
