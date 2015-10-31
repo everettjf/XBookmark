@@ -23,7 +23,7 @@ Bookmark Plugin for Xcode
 Now, you can see menus in the `Edit` Menu.
 
 # Usage
-**Shortcuts can be redefined**
+**Shortcuts configurable**
 - type `F3` to toggle bookmarks.
 - type `Shift + F3` to display bookmark list.
 - type `Command + F3` to jump to next bookmark.
