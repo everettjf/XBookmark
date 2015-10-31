@@ -39,6 +39,8 @@ Now, you can see menus in the `Edit` Menu.
 
 # History Versions
 
-- 2015-10-31 0.3 Shortcut configurable
-- 2015-10-26 0.2 Fix problem (main for slow locating)
-- 2015-10-06 0.1 First Release 
+- 2015-10-31 0.3 
+    1. Shortcut configurable.
+    2. Star flag in sidebar of code editor.
+- 2015-10-26 0.2 Fix problem (main for slow locating).
+- 2015-10-06 0.1 First Release (just working).
