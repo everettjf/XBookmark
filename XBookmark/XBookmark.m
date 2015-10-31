@@ -132,6 +132,8 @@
     
     // point to the new added bookmark
     self.currentBookmarkIndex = [XBookmarkModel sharedModel].bookmarks.count - 1;
+    
+    [[editor valueForKey:@"_sidebarView"]setNeedsDisplay:YES];
 }
 
 - (void)nextBookmark{
@@ -142,8 +144,8 @@
         return;
     NSUInteger nextIndex = self.currentBookmarkIndex + 1;
     if(nextIndex >= model.bookmarks.count){
-        // 如果超了就默认最后一个
-        nextIndex = model.bookmarks.count - 1;
+        // 如果超了就回到第一个
+        nextIndex = 0;
     }
     
     XBookmarkEntity *bookmark = [model.bookmarks objectAtIndex:nextIndex];
@@ -158,7 +160,8 @@
         return;
     NSUInteger previousIndex;
     if(self.currentBookmarkIndex == 0){
-        previousIndex = 0;
+        // 如果已经是第一个，则到最后一个
+        previousIndex = model.bookmarks.count - 1;
     }else{
         previousIndex = self.currentBookmarkIndex - 1;
     }
