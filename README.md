@@ -6,7 +6,8 @@ Bookmark Plugin for Xcode
 
 # Screenshot
 
-![xbookmark](http://everettjf.github.io/images/extern/xbookmark3.png)
+![xbookmark](http://everettjf.github.io/images/extern/xbookmark0.3.0.png)
+
 
 # Feature
 - Toggle Bookmark
