@@ -30,13 +30,33 @@
     
     [[XBookmarkDefaults sharedDefaults] enableAllMenuShortcuts:NO];
     
-    
-    [self.toggleShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutToggle];
-    [self.nextShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutNext];
-    [self.prevShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutPrev];
-    [self.showShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutShow];
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.window];
+    
+    XBookmarkDefaults *config = [XBookmarkDefaults sharedDefaults];
+    
+    self.toggleShortcutView.shortcutValue = config.currentShortcutToggle;
+    self.toggleShortcutView.shortcutValueChange = ^(MASShortcutView *sender){
+        config.currentShortcutToggle = sender.shortcutValue;
+        [config synchronize];
+    };
+    
+    self.nextShortcutView.shortcutValue = config.currentShortcutNext;
+    self.nextShortcutView.shortcutValueChange = ^(MASShortcutView *sender){
+        config.currentShortcutNext = sender.shortcutValue;
+        [config synchronize];
+    };
+    
+    self.prevShortcutView.shortcutValue = config.currentShortcutPrev;
+    self.prevShortcutView.shortcutValueChange = ^(MASShortcutView *sender){
+        config.currentShortcutPrev = sender.shortcutValue;
+        [config synchronize];
+    };
+    
+    self.showShortcutView.shortcutValue = config.currentShortcutShow;
+    self.showShortcutView.shortcutValueChange = ^(MASShortcutView *sender){
+        config.currentShortcutShow = sender.shortcutValue;
+        [config synchronize];
+    };
 }
 
 -(void)windowWillClose:(NSNotification *)notification{

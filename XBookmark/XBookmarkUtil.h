@@ -33,4 +33,6 @@
 //+ (BOOL)openSourceFile:(NSString*)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber;
 + (BOOL)openSourceFile:(NSString*)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber;
 
++ (NSString*)settingDirectory;
+
 @end

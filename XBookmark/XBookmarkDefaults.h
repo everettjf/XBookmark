@@ -9,12 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Shortcut.h"
 
-extern NSString * const XBookmarkDefaultsShortcutToggle;
-extern NSString * const XBookmarkDefaultsShortcutNext;
-extern NSString * const XBookmarkDefaultsShortcutPrev;
-extern NSString * const XBookmarkDefaultsShortcutShow;
-
-@interface XBookmarkDefaults : NSObject
+@interface XBookmarkDefaults : NSObject <NSCoding>
 
 +(MASShortcut*)defaultShortcutToggle;
 +(MASShortcut*)defaultShortcutNext;
@@ -28,13 +23,13 @@ extern NSString * const XBookmarkDefaultsShortcutShow;
 @property (nonatomic,strong) MASShortcut* currentShortcutPrev;
 @property (nonatomic,strong) MASShortcut* currentShortcutShow;
 
-
-
 @property (nonatomic,strong) NSMenuItem *toggleMenuItem;
 @property (nonatomic,strong) NSMenuItem *nextMenuItem;
 @property (nonatomic,strong) NSMenuItem *prevMenuItem;
 @property (nonatomic,strong) NSMenuItem *showMenuItem;
 
 -(void)enableAllMenuShortcuts:(BOOL)enable;
+
+-(void)synchronize;
 
 @end

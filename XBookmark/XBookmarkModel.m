@@ -146,19 +146,7 @@
                                  [workspaceFilePath hash]
                                  ];
     
-    return [[XBookmarkModel settingDirectory] stringByAppendingPathComponent:settingFileName];
-}
-
-+ (NSString*)settingDirectory
-{
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString* settingDirectory = [(NSString*)[paths firstObject] stringByAppendingPathComponent:@"XBookmark"];
-    
-    NSFileManager *fileManger = [NSFileManager defaultManager];
-    if (![fileManger fileExistsAtPath:settingDirectory]) {
-        [fileManger createDirectoryAtPath:settingDirectory withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    return settingDirectory;
+    return [[XBookmarkUtil settingDirectory] stringByAppendingPathComponent:settingFileName];
 }
 
 -(void)loadOnceBookmarks{

@@ -7,11 +7,12 @@
 //
 
 #import "XBookmarkDefaults.h"
+#import "XBookmarkUtil.h"
 
-NSString * const XBookmarkDefaultsShortcutToggle = @"XBookmarkDefaultsShortcutToggle";
-NSString * const XBookmarkDefaultsShortcutNext = @"XBookmarkDefaultsShortcutNext";
-NSString * const XBookmarkDefaultsShortcutPrev = @"XBookmarkDefaultsShortcutPrev";
-NSString * const XBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShortcutShow";
+static NSString * const kXBookmarkDefaultsShortcutToggle = @"XBookmarkDefaultsShortcutToggle";
+static NSString * const kXBookmarkDefaultsShortcutNext = @"XBookmarkDefaultsShortcutNext";
+static NSString * const kXBookmarkDefaultsShortcutPrev = @"XBookmarkDefaultsShortcutPrev";
+static NSString * const kXBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShortcutShow";
 
 @implementation XBookmarkDefaults
 
@@ -32,21 +33,49 @@ NSString * const XBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShortcutShow
     static XBookmarkDefaults *inst;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        inst = [[XBookmarkDefaults alloc]init];
-        [inst load];
+        inst = [NSKeyedUnarchiver unarchiveObjectWithFile:[XBookmarkDefaults configFilePath]];
+        if(inst == nil){
+            inst = [[XBookmarkDefaults alloc]init];
+        }
     });
     return inst;
 }
 
--(void)load{
-    // Load from file
-    // Todo
-    
-    // if failed , load default
-    self.currentShortcutToggle = [XBookmarkDefaults defaultShortcutToggle];
-    self.currentShortcutNext = [XBookmarkDefaults defaultShortcutNext];
-    self.currentShortcutPrev = [XBookmarkDefaults defaultShortcutPrev];
-    self.currentShortcutShow = [XBookmarkDefaults defaultShortcutShow];
++(NSString*)configFilePath{
+    return [[XBookmarkUtil settingDirectory]stringByAppendingPathComponent:@"config"];
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.currentShortcutToggle = [XBookmarkDefaults defaultShortcutToggle];
+        self.currentShortcutNext = [XBookmarkDefaults defaultShortcutNext];
+        self.currentShortcutPrev = [XBookmarkDefaults defaultShortcutPrev];
+        self.currentShortcutShow = [XBookmarkDefaults defaultShortcutShow];
+    }
+    return self;
+}
+
+-(void)synchronize{
+    [NSKeyedArchiver archiveRootObject:self toFile:[XBookmarkDefaults configFilePath]];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        self.currentShortcutToggle = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutToggle];
+        self.currentShortcutNext = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutNext];
+        self.currentShortcutPrev = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutPrev];
+        self.currentShortcutShow = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutShow];
+    }
+    return self;
+}
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.currentShortcutToggle forKey:kXBookmarkDefaultsShortcutToggle];
+    [aCoder encodeObject:self.currentShortcutNext forKey:kXBookmarkDefaultsShortcutNext];
+    [aCoder encodeObject:self.currentShortcutPrev forKey:kXBookmarkDefaultsShortcutPrev];
+    [aCoder encodeObject:self.currentShortcutShow forKey:kXBookmarkDefaultsShortcutShow];
 }
 
 -(void)enableAllMenuShortcuts:(BOOL)enable{
