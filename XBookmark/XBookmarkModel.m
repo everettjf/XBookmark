@@ -41,6 +41,11 @@
 
 @interface XBookmarkModel ()
 
+@property (nonatomic,strong) NSMutableArray *bookmarks;
+
+// for fast check
+@property (nonatomic,strong) NSMutableSet<NSString*> *markset;
+
 @end
 
 @implementation XBookmarkModel
@@ -59,15 +64,24 @@
     self = [super init];
     if (self) {
         self.bookmarks = [[NSMutableArray alloc]init];
+        self.markset = [[NSMutableSet alloc]init];
     }
     return self;
+}
+static inline NSString* xbookmark_HashLine(NSString*sourcePath,NSUInteger lineNumber){
+    return [NSString stringWithFormat:@"%lu-%lu",lineNumber,[sourcePath hash]];
 }
 
 -(void)insertObject:(XBookmarkEntity *)object inBookmarksAtIndex:(NSUInteger)index{
     [_bookmarks insertObject:object atIndex:index];
+    [_markset addObject:xbookmark_HashLine(object.sourcePath, object.lineNumber)];
 }
 -(void)removeObjectFromBookmarksAtIndex:(NSUInteger)index{
+    XBookmarkEntity *object = [_bookmarks objectAtIndex:index];
+    if(nil == object)
+        return;
     [_bookmarks removeObjectAtIndex:index];
+    [_markset removeObject:xbookmark_HashLine(object.sourcePath, object.lineNumber)];
 }
 
 -(void)addBookmark:(XBookmarkEntity *)bookmark{
@@ -78,6 +92,7 @@
     while(_bookmarks.count > 0){
         [self removeObjectFromBookmarksAtIndex:_bookmarks.count - 1];
     }
+    [_markset removeAllObjects];
 }
 
 -(void)removeBookmark:(NSString *)sourcePath lineNumber:(NSUInteger)lineNumber{
@@ -90,15 +105,9 @@
 }
 
 -(BOOL)hasBookmark:(NSString *)sourcePath lineNumber:(NSUInteger)lineNumber{
-    __block BOOL has = NO;
-    [_bookmarks enumerateObjectsUsingBlock:^(XBookmarkEntity *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if([sourcePath isEqualToString:obj.sourcePath] && lineNumber == obj.lineNumber){
-            has = YES;
-            *stop = YES;
-        }
-    }];
-    return has;
+    return [_markset containsObject:xbookmark_HashLine(sourcePath, lineNumber)];
 }
+
 -(BOOL)toggleBookmark:(XBookmarkEntity *)bookmark{
     if([self hasBookmark:bookmark.sourcePath lineNumber:bookmark.lineNumber]){
         [self removeBookmark:bookmark.sourcePath lineNumber:bookmark.lineNumber];
@@ -127,7 +136,15 @@
         return;
     
     self.bookmarks = [data mutableCopy];
+    [self refreshHashset];
 }
+-(void)refreshHashset{
+    [_markset removeAllObjects];
+    [self.bookmarks enumerateObjectsUsingBlock:^(XBookmarkEntity* _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+        [_markset addObject:xbookmark_HashLine(object.sourcePath, object.lineNumber)];
+    }];
+}
+
 
 -(NSString*)currentWorkspaceSettingFilePath{
     static NSString *cachedWorkspaceFilePath = nil;

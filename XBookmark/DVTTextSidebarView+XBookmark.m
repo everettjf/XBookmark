@@ -9,6 +9,7 @@
 #import "DVTTextSidebarView+XBookmark.h"
 #import "JRSwizzle.h"
 #import "IDEKit.h"
+#import "XBookmarkModel.h"
 
 @implementation DVTTextSidebarView (XBookmark)
 
@@ -30,8 +31,9 @@
     
     for(NSUInteger idx = 0; idx < indexCount; ++idx){
         NSUInteger line = indexes[idx];
-        
-        [self xbookmark_drawBookmarkAtLine:line];
+        if([[XBookmarkModel sharedModel]hasBookmark:fileName lineNumber:line]){
+            [self xbookmark_drawBookmarkAtLine:line];
+        }
     }
     
     [self xbookmark_drawLineNumbersInSidebarRect:rect foldedIndexes:indexes count:indexCount linesToInvert:invert linesToReplace:replace getParaRectBlock:rectBlock];

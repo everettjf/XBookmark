@@ -22,7 +22,7 @@
 
 +(XBookmarkModel *)sharedModel;
 
-@property (nonatomic,strong) NSMutableArray *bookmarks;
+@property (nonatomic,strong,readonly) NSMutableArray *bookmarks;
 
 -(void)addBookmark:(XBookmarkEntity*)bookmark;
 -(void)removeBookmark:(NSString*)sourcePath lineNumber:(NSUInteger)lineNumber;
