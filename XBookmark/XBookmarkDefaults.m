@@ -49,4 +49,31 @@ NSString * const XBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShortcutShow
     self.currentShortcutShow = [XBookmarkDefaults defaultShortcutShow];
 }
 
+-(void)enableAllMenuShortcuts:(BOOL)enable{
+    if(enable){
+        self.toggleMenuItem.keyEquivalent = self.currentShortcutToggle.keyCodeStringForKeyEquivalent;
+        self.toggleMenuItem.keyEquivalentModifierMask = self.currentShortcutToggle.modifierFlags;
+        
+        self.nextMenuItem.keyEquivalent = self.currentShortcutNext.keyCodeStringForKeyEquivalent;
+        self.nextMenuItem.keyEquivalentModifierMask = self.currentShortcutNext.modifierFlags;
+        
+        self.prevMenuItem.keyEquivalent = self.currentShortcutPrev.keyCodeStringForKeyEquivalent;
+        self.prevMenuItem.keyEquivalentModifierMask = self.currentShortcutPrev.modifierFlags;
+        
+        self.showMenuItem.keyEquivalent = self.currentShortcutShow.keyCodeStringForKeyEquivalent;
+        self.showMenuItem.keyEquivalentModifierMask = self.currentShortcutShow.modifierFlags;
+    }else{
+        NSArray *menus = @[
+                           self.toggleMenuItem,
+                           self.nextMenuItem,
+                           self.prevMenuItem,
+                           self.showMenuItem
+                           ];
+        for (NSMenuItem *menu in menus){
+            menu.keyEquivalent = @"";
+            menu.keyEquivalentModifierMask = 0;
+        }
+    }
+}
+
 @end

@@ -28,4 +28,13 @@ extern NSString * const XBookmarkDefaultsShortcutShow;
 @property (nonatomic,strong) MASShortcut* currentShortcutPrev;
 @property (nonatomic,strong) MASShortcut* currentShortcutShow;
 
+
+
+@property (nonatomic,strong) NSMenuItem *toggleMenuItem;
+@property (nonatomic,strong) NSMenuItem *nextMenuItem;
+@property (nonatomic,strong) NSMenuItem *prevMenuItem;
+@property (nonatomic,strong) NSMenuItem *showMenuItem;
+
+-(void)enableAllMenuShortcuts:(BOOL)enable;
+
 @end

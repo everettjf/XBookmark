@@ -9,8 +9,9 @@
 #import "XBookmarkPreferencesWindowController.h"
 #import "Shortcut.h"
 #import "XBookmarkDefaults.h"
+#import "XBookmarkUtil.h"
 
-@interface XBookmarkPreferencesWindowController ()
+@interface XBookmarkPreferencesWindowController ()<NSWindowDelegate>
 @property (weak) IBOutlet MASShortcutView *toggleShortcutView;
 @property (weak) IBOutlet MASShortcutView *nextShortcutView;
 @property (weak) IBOutlet MASShortcutView *prevShortcutView;
@@ -27,11 +28,20 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
+    [[XBookmarkDefaults sharedDefaults] enableAllMenuShortcuts:NO];
+    
+    
     [self.toggleShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutToggle];
     [self.nextShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutNext];
     [self.prevShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutPrev];
     [self.showShortcutView setAssociatedUserDefaultsKey:XBookmarkDefaultsShortcutShow];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.window];
 }
+
+-(void)windowWillClose:(NSNotification *)notification{
+    [[XBookmarkDefaults sharedDefaults] enableAllMenuShortcuts:YES];
+}
+
 
 @end
