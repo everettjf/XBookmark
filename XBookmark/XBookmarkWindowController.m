@@ -107,13 +107,18 @@
 }
 - (IBAction)helpClicked:(id)sender {
     NSString *githubURLString = @"http://github.com/everettjf/XBookmark";
-    NSString *versionString = @"0.2.0";
+    NSString *versionString = [[NSBundle bundleForClass:[XBookmarkWindowController class]]objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *xcodeVersion = [[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"OK"];
     [alert addButtonWithTitle:@"Source on GitHub"];
     [alert setMessageText:@"XBookmark"];
-    [alert setInformativeText:[NSString stringWithFormat:@"Author:everettjf\nGitHub:%@\nVersion:%@",githubURLString,versionString]];
+    [alert setInformativeText:[NSString stringWithFormat:@"Author:everettjf\nGitHub:%@\nVersion:%@\nXcode:%@",
+                               githubURLString,
+                               versionString,
+                               xcodeVersion
+                               ]];
     [alert setAlertStyle:NSWarningAlertStyle];
     NSModalResponse resp = [alert runModal];
     if(resp == NSAlertSecondButtonReturn){
