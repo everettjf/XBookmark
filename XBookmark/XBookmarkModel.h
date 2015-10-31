@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface XBookmarkEntity : NSObject<NSCoding>
 @property (nonatomic,strong) NSString *sourcePath;
 @property (nonatomic,assign) NSUInteger lineNumber;
@@ -21,7 +22,7 @@
 
 +(XBookmarkModel *)sharedModel;
 
-@property (nonatomic,strong) NSMutableArray *bookmarks;
+@property (nonatomic,strong,readonly) NSMutableArray *bookmarks;
 
 -(void)addBookmark:(XBookmarkEntity*)bookmark;
 -(void)removeBookmark:(NSString*)sourcePath lineNumber:(NSUInteger)lineNumber;
@@ -34,6 +35,7 @@
 -(void)loadBookmarks;
 
 -(void)loadOnceBookmarks;
+
 
 @end
 

@@ -7,9 +7,10 @@
 //
 
 #import "XBookmark.h"
-#import "XcodeUtil.h"
+#import "XBookmarkUtil.h"
 #import "XBookmarkModel.h"
 #import "XBookmarkWindowController.h"
+#import "XBookmarkDefaults.h"
 
 @interface XBookmark()
 
@@ -41,22 +42,14 @@
                                                      name:NSApplicationDidFinishLaunchingNotification
                                                    object:nil];
         
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationLog:) name:nil object:nil];
     }
     return self;
 }
-//- (void)notificationLog:(NSNotification *)notify
-//{
-////    NSLog(@"notify name = %@",notify.name);
-//}
 
 - (void)didApplicationFinishLaunchingNotification:(NSNotification*)noti
 {
     //removeObserver
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
-    
-	unichar cf3 = NSF3FunctionKey;
-	NSString *f3 = [NSString stringWithCharacters:&cf3 length:1];
     
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
@@ -67,28 +60,45 @@
         mainMenu.submenu = submenu;
         
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:f3];
-            [actionMenuItem setKeyEquivalentModifierMask:0];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutToggle;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
+            
+            [XBookmarkDefaults sharedDefaults].toggleMenuItem = actionMenuItem;
         }
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark) keyEquivalent:f3];
-            [actionMenuItem setKeyEquivalentModifierMask:NSCommandKeyMask];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutNext;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
+            
+            [XBookmarkDefaults sharedDefaults].nextMenuItem = actionMenuItem;
         }
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Previous Bookmark" action:@selector(previousBookmark) keyEquivalent:f3];
-            [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask | NSControlKeyMask];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutPrev;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Previous Bookmark" action:@selector(previousBookmark)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
+            
+            [XBookmarkDefaults sharedDefaults].prevMenuItem = actionMenuItem;
         }
         {
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks) keyEquivalent:f3];
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutShow;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
+            
+            [XBookmarkDefaults sharedDefaults].showMenuItem = actionMenuItem;
         }
     }
 }
@@ -101,7 +111,7 @@
 {
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
-    IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
+    IDESourceCodeEditor* editor = [XBookmarkUtil currentEditor];
     if ([editor isKindOfClass:[IDEEditorEmpty class]]) {
         return;
     }
@@ -122,6 +132,8 @@
     
     // point to the new added bookmark
     self.currentBookmarkIndex = [XBookmarkModel sharedModel].bookmarks.count - 1;
+    
+    [[editor valueForKey:@"_sidebarView"]setNeedsDisplay:YES];
 }
 
 - (void)nextBookmark{
@@ -132,12 +144,12 @@
         return;
     NSUInteger nextIndex = self.currentBookmarkIndex + 1;
     if(nextIndex >= model.bookmarks.count){
-        // 如果超了就默认最后一个
-        nextIndex = model.bookmarks.count - 1;
+        // 如果超了就回到第一个
+        nextIndex = 0;
     }
     
     XBookmarkEntity *bookmark = [model.bookmarks objectAtIndex:nextIndex];
-    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    [XBookmarkUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
     self.currentBookmarkIndex = nextIndex;
 }
 - (void)previousBookmark{
@@ -148,7 +160,8 @@
         return;
     NSUInteger previousIndex;
     if(self.currentBookmarkIndex == 0){
-        previousIndex = 0;
+        // 如果已经是第一个，则到最后一个
+        previousIndex = model.bookmarks.count - 1;
     }else{
         previousIndex = self.currentBookmarkIndex - 1;
     }
@@ -157,7 +170,7 @@
     }
     
     XBookmarkEntity *bookmark = [model.bookmarks objectAtIndex:previousIndex];
-    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    [XBookmarkUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
     self.currentBookmarkIndex = previousIndex;
 }
 - (void)showBookmarks{
@@ -168,12 +181,12 @@
     }else{
         if(self.windowController == nil){
             // Remember the current IDE workspace window controller
-            [XcodeUtil currentIDEWorkspaceWindowController];
+            [XBookmarkUtil currentIDEWorkspaceWindowController];
             
             self.windowController = [[XBookmarkWindowController alloc]initWithWindowNibName:@"XBookmarkWindowController"];
         }
         
-        self.windowController.window.title = [[XcodeUtil currentWorkspaceDocument].displayName stringByDeletingLastPathComponent];
+        self.windowController.window.title = [[XBookmarkUtil currentWorkspaceDocument].displayName stringByDeletingLastPathComponent];
         [self.windowController.window makeKeyAndOrderFront:nil];
         [self.windowController refreshBookmarks];
     }

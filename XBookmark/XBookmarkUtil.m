@@ -6,28 +6,28 @@
 //  Copyright © 2015 everettjf. All rights reserved.
 //
 
-#import "XcodeUtil.h"
+#import "XBookmarkUtil.h"
 #import <objc/runtime.h>
 
-@implementation XcodeGlobal
+@implementation XBookmarkGlobal
 
-+(XcodeGlobal *)shared{
-    static XcodeGlobal *inst;
++(XBookmarkGlobal *)shared{
+    static XBookmarkGlobal *inst;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        inst = [[XcodeGlobal alloc]init];
+        inst = [[XBookmarkGlobal alloc]init];
     });
     return inst;
 }
 
 @end
 
-@implementation XcodeUtil
+@implementation XBookmarkUtil
 
 
 + (IDEWorkspaceTabController*)tabController
 {
-    NSWindowController* currentWindowController = [XcodeUtil currentIDEWorkspaceWindowController];
+    NSWindowController* currentWindowController = [XBookmarkUtil currentIDEWorkspaceWindowController];
     if ([currentWindowController
             isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
         IDEWorkspaceWindowController* workspaceController = (IDEWorkspaceWindowController*)currentWindowController;
@@ -39,7 +39,7 @@
 
 + (id)currentEditor
 {
-    NSWindowController* currentWindowController = [XcodeUtil currentIDEWorkspaceWindowController];
+    NSWindowController* currentWindowController = [XBookmarkUtil currentIDEWorkspaceWindowController];
     if ([currentWindowController
             isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
         IDEWorkspaceWindowController* workspaceController = (IDEWorkspaceWindowController*)currentWindowController;
@@ -51,12 +51,12 @@
 }
 
 + (IDEWorkspace*)currentIDEWorkspace {
-    return (IDEWorkspace*) [[XcodeUtil currentIDEWorkspaceWindowController] valueForKey:@"_workspace"];
+    return (IDEWorkspace*) [[XBookmarkUtil currentIDEWorkspaceWindowController] valueForKey:@"_workspace"];
 }
 
 + (IDEWorkspaceDocument*)currentWorkspaceDocument
 {
-    NSWindowController* currentWindowController = [XcodeUtil currentIDEWorkspaceWindowController];
+    NSWindowController* currentWindowController = [XBookmarkUtil currentIDEWorkspaceWindowController];
     id document = [currentWindowController document];
     if (currentWindowController &&
         [document isKindOfClass:NSClassFromString(@"IDEWorkspaceDocument")]) {
@@ -86,7 +86,7 @@
 }
 
 +(NSString *)currentWorkspaceFilePath{
-    IDEWorkspaceDocument *document = [XcodeUtil currentWorkspaceDocument];
+    IDEWorkspaceDocument *document = [XBookmarkUtil currentWorkspaceDocument];
     if(nil == document)
         return nil;
     DVTFilePath *workspacefilePath = document.workspace.representingFilePath;
@@ -125,17 +125,17 @@
 
 
 + (IDEWorkspaceWindowController*)currentIDEWorkspaceWindowController {
-    if([XcodeGlobal shared].mainWorkspaceWindowController == nil){
-        [XcodeGlobal shared].mainWorkspaceWindowController = (IDEWorkspaceWindowController *)[[NSApp mainWindow]windowController];
+    if([XBookmarkGlobal shared].mainWorkspaceWindowController == nil){
+        [XBookmarkGlobal shared].mainWorkspaceWindowController = (IDEWorkspaceWindowController *)[[NSApp mainWindow]windowController];
     }
-    return [XcodeGlobal shared].mainWorkspaceWindowController;
+    return [XBookmarkGlobal shared].mainWorkspaceWindowController;
 }
 
 + (void)jumpToFileURL:(NSURL *)fileURL {
     DVTDocumentLocation *documentLocation = [[DVTDocumentLocation alloc] initWithDocumentURL:fileURL timestamp:nil];
-    IDEEditorOpenSpecifier *openSpecifier = [IDEEditorOpenSpecifier structureEditorOpenSpecifierForDocumentLocation:documentLocation inWorkspace:[XcodeUtil currentIDEWorkspace]
+    IDEEditorOpenSpecifier *openSpecifier = [IDEEditorOpenSpecifier structureEditorOpenSpecifierForDocumentLocation:documentLocation inWorkspace:[XBookmarkUtil currentIDEWorkspace]
     error:nil];
-    [[XcodeUtil currentIDEWorkspaceWindowController].editorArea.lastActiveEditorContext openEditorOpenSpecifier:openSpecifier];
+    [[XBookmarkUtil currentIDEWorkspaceWindowController].editorArea.lastActiveEditorContext openEditorOpenSpecifier:openSpecifier];
 }
 
 + (NSUInteger)locationRangeForTextView:(DVTSourceTextView*)textView forLine:(NSUInteger)lineNumber {
@@ -145,16 +145,16 @@
 }
 
 +(BOOL)openSourceFile:(NSString *)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber{
-    NSString *currentPath = [XcodeUtil currentSourceCodeDocument].fileURL.path;
+    NSString *currentPath = [XBookmarkUtil currentSourceCodeDocument].fileURL.path;
     if(![sourceFilePath isEqualToString:currentPath]){
         [self jumpToFileURL:[NSURL fileURLWithPath:sourceFilePath]];
     }
 
-    IDESourceCodeEditor *editor = [XcodeUtil currentEditor];
+    IDESourceCodeEditor *editor = [XBookmarkUtil currentEditor];
     if (editor) {
         DVTSourceTextView* textView = editor.textView;
         
-        NSUInteger lineLocation = [XcodeUtil locationRangeForTextView:textView forLine:lineNumber-1];
+        NSUInteger lineLocation = [XBookmarkUtil locationRangeForTextView:textView forLine:lineNumber-1];
         NSRange locationRange = NSMakeRange(lineLocation, 0);
         		
         [textView setSelectedRange:locationRange];
@@ -162,6 +162,18 @@
         [textView showFindIndicatorForRange:locationRange];
     }
     return YES;
+}
+
++ (NSString*)settingDirectory
+{
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString* settingDirectory = [(NSString*)[paths firstObject] stringByAppendingPathComponent:@"XBookmark"];
+    
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    if (![fileManger fileExistsAtPath:settingDirectory]) {
+        [fileManger createDirectoryAtPath:settingDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return settingDirectory;
 }
 
 

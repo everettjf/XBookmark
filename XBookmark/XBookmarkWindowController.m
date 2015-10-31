@@ -8,16 +8,16 @@
 
 #import "XBookmarkWindowController.h"
 #import "XBookmarkModel.h"
-#import "XcodeUtil.h"
+#import "XBookmarkUtil.h"
+#import "XBookmarkPreferencesWindowController.h"
 
 @implementation XBookmarkTableCellView
-
-
 @end
 
 @interface XBookmarkWindowController () <NSTableViewDelegate,NSTableViewDataSource>
 @property (weak) IBOutlet NSTableView *bookmarksTableView;
 @property (nonatomic,strong) NSArray *bookmarks;
+@property (nonatomic,strong) XBookmarkPreferencesWindowController *preferencesWindowController;
 
 @end
 
@@ -107,13 +107,18 @@
 }
 - (IBAction)helpClicked:(id)sender {
     NSString *githubURLString = @"http://github.com/everettjf/XBookmark";
-    NSString *versionString = @"0.2.0";
+    NSString *versionString = [[NSBundle bundleForClass:[XBookmarkWindowController class]]objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *xcodeVersion = [[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"OK"];
     [alert addButtonWithTitle:@"Source on GitHub"];
     [alert setMessageText:@"XBookmark"];
-    [alert setInformativeText:[NSString stringWithFormat:@"Author:everettjf\nGitHub:%@\nVersion:%@",githubURLString,versionString]];
+    [alert setInformativeText:[NSString stringWithFormat:@"Author:everettjf\nGitHub:%@\nVersion:%@\nXcode:%@",
+                               githubURLString,
+                               versionString,
+                               xcodeVersion
+                               ]];
     [alert setAlertStyle:NSWarningAlertStyle];
     NSModalResponse resp = [alert runModal];
     if(resp == NSAlertSecondButtonReturn){
@@ -133,7 +138,11 @@
         return;
     
     // locate bookmark
-    [XcodeUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+    [XBookmarkUtil openSourceFile:bookmark.sourcePath highlightLineNumber:bookmark.lineNumber];
+}
+- (IBAction)showPreferencesClicked:(id)sender {
+    self.preferencesWindowController = [[XBookmarkPreferencesWindowController alloc]init];
+    [self.preferencesWindowController.window makeKeyAndOrderFront:sender];
 }
 
 @end

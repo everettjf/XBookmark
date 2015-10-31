@@ -13,13 +13,13 @@
 #import "IDESourceEditor.h"
 
 // Helper globals
-@interface XcodeGlobal : NSObject
-+(XcodeGlobal*)shared;
+@interface XBookmarkGlobal : NSObject
++(XBookmarkGlobal*)shared;
 @property (nonatomic,weak) IDEWorkspaceWindowController *mainWorkspaceWindowController;
 @end
 
 
-@interface XcodeUtil : NSObject
+@interface XBookmarkUtil : NSObject
 + (IDEWorkspaceDocument*)currentWorkspaceDocument;
 + (IDEWorkspaceTabController*)tabController;
 + (IDESourceCodeEditor*)currentEditor;
@@ -32,5 +32,7 @@
 + (NSString*)currentWorkspaceFilePath;
 //+ (BOOL)openSourceFile:(NSString*)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber;
 + (BOOL)openSourceFile:(NSString*)sourceFilePath highlightLineNumber:(NSUInteger)lineNumber;
+
++ (NSString*)settingDirectory;
 
 @end
