@@ -6,7 +6,7 @@ Bookmark Plugin for Xcode
 
 # Screenshot
 
-![xbookmark](http://everettjf.github.io/images/extern/xbookmark0.3.0.png)
+![xbookmark](http://i.imgur.com/IoSw0Iz.png)
 
 
 # Feature
