@@ -107,8 +107,21 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (BOOL)_hasValidWorkspace{
+    if([XBookmarkUtil currentIDEWorkspace] == nil){
+        NSAlert *alert = [[NSAlert alloc]init];
+        [alert addButtonWithTitle:@"OK"];
+        [alert setInformativeText:@"Please open a workspace."];
+        [alert runModal];
+        return NO;
+    }
+    return YES;
+}
+
 - (void)toggleBookmark
 {
+    if(![self _hasValidWorkspace]) return;
+    
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
     IDESourceCodeEditor* editor = [XBookmarkUtil currentEditor];
@@ -137,6 +150,8 @@
 }
 
 - (void)nextBookmark{
+    if(![self _hasValidWorkspace]) return;
+
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
     XBookmarkModel *model = [XBookmarkModel sharedModel];
@@ -153,6 +168,8 @@
     self.currentBookmarkIndex = nextIndex;
 }
 - (void)previousBookmark{
+    if(![self _hasValidWorkspace]) return;
+
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
     XBookmarkModel *model = [XBookmarkModel sharedModel];
@@ -174,6 +191,8 @@
     self.currentBookmarkIndex = previousIndex;
 }
 - (void)showBookmarks{
+    if(![self _hasValidWorkspace]) return;
+
     [[XBookmarkModel sharedModel]loadOnceBookmarks];
     
     if(self.windowController.window.isVisible){
