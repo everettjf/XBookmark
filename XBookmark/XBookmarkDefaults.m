@@ -13,6 +13,7 @@ static NSString * const kXBookmarkDefaultsShortcutToggle = @"XBookmarkDefaultsSh
 static NSString * const kXBookmarkDefaultsShortcutNext = @"XBookmarkDefaultsShortcutNext";
 static NSString * const kXBookmarkDefaultsShortcutPrev = @"XBookmarkDefaultsShortcutPrev";
 static NSString * const kXBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShortcutShow";
+static NSString * const kXBookmarkDefaultsShortcutClear = @"XBookmarkDefaultsShortcutClear";
 
 @implementation XBookmarkDefaults
 
@@ -27,6 +28,9 @@ static NSString * const kXBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShor
 }
 +(MASShortcut *)defaultShortcutShow{
     return [MASShortcut shortcutWithKeyCode:kVK_F3 modifierFlags:NSShiftKeyMask];
+}
++(MASShortcut *)defaultShortcutClear{
+    return [MASShortcut shortcutWithKeyCode:kVK_F3 modifierFlags:NSShiftKeyMask |NSCommandKeyMask];
 }
 
 +(XBookmarkDefaults *)sharedDefaults{
@@ -53,6 +57,7 @@ static NSString * const kXBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShor
         self.currentShortcutNext = [XBookmarkDefaults defaultShortcutNext];
         self.currentShortcutPrev = [XBookmarkDefaults defaultShortcutPrev];
         self.currentShortcutShow = [XBookmarkDefaults defaultShortcutShow];
+        self.currentShortcutClear = [XBookmarkDefaults defaultShortcutClear];
     }
     return self;
 }
@@ -68,6 +73,9 @@ static NSString * const kXBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShor
         self.currentShortcutNext = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutNext];
         self.currentShortcutPrev = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutPrev];
         self.currentShortcutShow = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutShow];
+        self.currentShortcutClear = [aDecoder decodeObjectForKey:kXBookmarkDefaultsShortcutClear];
+        
+        if(!self.currentShortcutClear) self.currentShortcutClear = [XBookmarkDefaults defaultShortcutClear];
     }
     return self;
 }
@@ -76,6 +84,7 @@ static NSString * const kXBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShor
     [aCoder encodeObject:self.currentShortcutNext forKey:kXBookmarkDefaultsShortcutNext];
     [aCoder encodeObject:self.currentShortcutPrev forKey:kXBookmarkDefaultsShortcutPrev];
     [aCoder encodeObject:self.currentShortcutShow forKey:kXBookmarkDefaultsShortcutShow];
+    [aCoder encodeObject:self.currentShortcutClear forKey:kXBookmarkDefaultsShortcutClear];
 }
 
 -(void)enableAllMenuShortcuts:(BOOL)enable{
@@ -91,12 +100,16 @@ static NSString * const kXBookmarkDefaultsShortcutShow = @"XBookmarkDefaultsShor
         
         self.showMenuItem.keyEquivalent = self.currentShortcutShow.keyCodeStringForKeyEquivalent;
         self.showMenuItem.keyEquivalentModifierMask = self.currentShortcutShow.modifierFlags;
+        
+        self.clearMenuItem.keyEquivalent = self.currentShortcutClear.keyCodeStringForKeyEquivalent;
+        self.clearMenuItem.keyEquivalentModifierMask = self.currentShortcutClear.modifierFlags;
     }else{
         NSArray *menus = @[
                            self.toggleMenuItem,
                            self.nextMenuItem,
                            self.prevMenuItem,
-                           self.showMenuItem
+                           self.showMenuItem,
+                           self.clearMenuItem,
                            ];
         for (NSMenuItem *menu in menus){
             menu.keyEquivalent = @"";

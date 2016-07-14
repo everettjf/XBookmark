@@ -2,7 +2,7 @@
 Bookmark Plugin for Xcode
 
 # Latest Version
-**0.3**
+**0.4**
 
 # Screenshot
 
@@ -29,6 +29,7 @@ Now, you can see menus in the `Edit` Menu.
 - type `Shift + F3` to display bookmark list.
 - type `Command + F3` to jump to next bookmark.
 - type `Ctrl + Shift + F3` to jump to previous bookmark.
+- type `Command + Shift + F3` to clear bookmarks.
 
 # Plan for next version
 - Bookmark Comment
@@ -40,6 +41,7 @@ Now, you can see menus in the `Edit` Menu.
 
 # History Versions
 
+- 2016-07-14 0.4 Add shortcut for clear bookmarks
 - 2015-10-31 0.3 
     1. Shortcut configurable.
     2. Star flag in sidebar of code editor.

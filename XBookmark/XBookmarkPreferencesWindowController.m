@@ -16,6 +16,7 @@
 @property (weak) IBOutlet MASShortcutView *nextShortcutView;
 @property (weak) IBOutlet MASShortcutView *prevShortcutView;
 @property (weak) IBOutlet MASShortcutView *showShortcutView;
+@property (weak) IBOutlet MASShortcutView *clearShortcutView;
 
 @end
 
@@ -55,6 +56,12 @@
     self.showShortcutView.shortcutValue = config.currentShortcutShow;
     self.showShortcutView.shortcutValueChange = ^(MASShortcutView *sender){
         config.currentShortcutShow = sender.shortcutValue;
+        [config synchronize];
+    };
+    
+    self.clearShortcutView.shortcutValue = config.currentShortcutClear;
+    self.clearShortcutView.shortcutValueChange = ^(MASShortcutView *sender){
+        config.currentShortcutClear = sender.shortcutValue;
         [config synchronize];
     };
 }

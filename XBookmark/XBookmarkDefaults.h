@@ -15,6 +15,7 @@
 +(MASShortcut*)defaultShortcutNext;
 +(MASShortcut*)defaultShortcutPrev;
 +(MASShortcut*)defaultShortcutShow;
++(MASShortcut*)defaultShortcutClear;
 
 +(XBookmarkDefaults*)sharedDefaults;
 
@@ -22,11 +23,13 @@
 @property (nonatomic,strong) MASShortcut* currentShortcutNext;
 @property (nonatomic,strong) MASShortcut* currentShortcutPrev;
 @property (nonatomic,strong) MASShortcut* currentShortcutShow;
+@property (nonatomic,strong) MASShortcut* currentShortcutClear;
 
 @property (nonatomic,strong) NSMenuItem *toggleMenuItem;
 @property (nonatomic,strong) NSMenuItem *nextMenuItem;
 @property (nonatomic,strong) NSMenuItem *prevMenuItem;
 @property (nonatomic,strong) NSMenuItem *showMenuItem;
+@property (nonatomic,strong) NSMenuItem *clearMenuItem;
 
 -(void)enableAllMenuShortcuts:(BOOL)enable;
 

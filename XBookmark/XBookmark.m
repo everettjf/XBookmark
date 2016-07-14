@@ -94,11 +94,21 @@
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks)
                                                              keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
             [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
-            [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
             
             [XBookmarkDefaults sharedDefaults].showMenuItem = actionMenuItem;
+        }
+        
+        {
+            MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutClear;
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Clear Bookmarks" action:@selector(clearBookmarks)
+                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+            [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
+            [actionMenuItem setTarget:self];
+            [[mainMenu submenu] addItem:actionMenuItem];
+            
+            [XBookmarkDefaults sharedDefaults].clearMenuItem = actionMenuItem;
         }
     }
 }
@@ -211,5 +221,17 @@
     }
 }
 
+- (void)clearBookmarks{
+    if(![self _hasValidWorkspace]) return;
+
+    [[XBookmarkModel sharedModel]loadOnceBookmarks];
+    
+    [[XBookmarkModel sharedModel]clearBookmarks];
+    [[XBookmarkModel sharedModel]saveBookmarks];
+    
+    if(self.windowController){
+        [self.windowController refreshBookmarks];
+    }
+}
 
 @end
