@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.4.0</string>
+	<string>0.5.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.4</string>
+	<string>0.5</string>
 	<key>DVTPlugInCompatibilityUUIDs</key>
 	<array>
 		<string>AD68E85B-441B-4301-B564-A45E4919A6AD</string>

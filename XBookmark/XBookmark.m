@@ -61,8 +61,11 @@
         
         {
             MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutToggle;
+            NSString *charcode = @"";
+            if(shortcut) charcode = shortcut.keyCodeStringForKeyEquivalent;
+            
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark)
-                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+                                                             keyEquivalent:charcode];
             [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
@@ -71,8 +74,11 @@
         }
         {
             MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutNext;
+            NSString *charcode = @"";
+            if(shortcut) charcode = shortcut.keyCodeStringForKeyEquivalent;
+            
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Next Bookmark" action:@selector(nextBookmark)
-                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+                                                             keyEquivalent:charcode];
             [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
@@ -81,8 +87,11 @@
         }
         {
             MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutPrev;
+            NSString *charcode = @"";
+            if(shortcut) charcode = shortcut.keyCodeStringForKeyEquivalent;
+            
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Previous Bookmark" action:@selector(previousBookmark)
-                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+                                                             keyEquivalent:charcode];
             [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
@@ -91,8 +100,11 @@
         }
         {
             MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutShow;
+            NSString *charcode = @"";
+            if(shortcut) charcode = shortcut.keyCodeStringForKeyEquivalent;
+            
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show Bookmarks" action:@selector(showBookmarks)
-                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+                                                             keyEquivalent:charcode];
             [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];
@@ -102,8 +114,11 @@
         
         {
             MASShortcut *shortcut = [XBookmarkDefaults sharedDefaults].currentShortcutClear;
+            NSString *charcode = @"";
+            if(shortcut) charcode = shortcut.keyCodeStringForKeyEquivalent;
+            
             NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Clear Bookmarks" action:@selector(clearBookmarks)
-                                                             keyEquivalent:shortcut.keyCodeStringForKeyEquivalent];
+                                                             keyEquivalent:charcode];
             [actionMenuItem setKeyEquivalentModifierMask:shortcut.modifierFlags];
             [actionMenuItem setTarget:self];
             [[mainMenu submenu] addItem:actionMenuItem];

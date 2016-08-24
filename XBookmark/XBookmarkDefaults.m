@@ -89,20 +89,30 @@ static NSString * const kXBookmarkDefaultsShortcutClear = @"XBookmarkDefaultsSho
 
 -(void)enableAllMenuShortcuts:(BOOL)enable{
     if(enable){
-        self.toggleMenuItem.keyEquivalent = self.currentShortcutToggle.keyCodeStringForKeyEquivalent;
-        self.toggleMenuItem.keyEquivalentModifierMask = self.currentShortcutToggle.modifierFlags;
+        if(self.currentShortcutToggle){
+            self.toggleMenuItem.keyEquivalent = self.currentShortcutToggle.keyCodeStringForKeyEquivalent;
+            self.toggleMenuItem.keyEquivalentModifierMask = self.currentShortcutToggle.modifierFlags;
+        }
         
-        self.nextMenuItem.keyEquivalent = self.currentShortcutNext.keyCodeStringForKeyEquivalent;
-        self.nextMenuItem.keyEquivalentModifierMask = self.currentShortcutNext.modifierFlags;
+        if(self.currentShortcutNext){
+            self.nextMenuItem.keyEquivalent = self.currentShortcutNext.keyCodeStringForKeyEquivalent;
+            self.nextMenuItem.keyEquivalentModifierMask = self.currentShortcutNext.modifierFlags;
+        }
         
-        self.prevMenuItem.keyEquivalent = self.currentShortcutPrev.keyCodeStringForKeyEquivalent;
-        self.prevMenuItem.keyEquivalentModifierMask = self.currentShortcutPrev.modifierFlags;
+        if(self.currentShortcutPrev){
+            self.prevMenuItem.keyEquivalent = self.currentShortcutPrev.keyCodeStringForKeyEquivalent;
+            self.prevMenuItem.keyEquivalentModifierMask = self.currentShortcutPrev.modifierFlags;
+        }
         
-        self.showMenuItem.keyEquivalent = self.currentShortcutShow.keyCodeStringForKeyEquivalent;
-        self.showMenuItem.keyEquivalentModifierMask = self.currentShortcutShow.modifierFlags;
+        if(self.currentShortcutShow){
+            self.showMenuItem.keyEquivalent = self.currentShortcutShow.keyCodeStringForKeyEquivalent;
+            self.showMenuItem.keyEquivalentModifierMask = self.currentShortcutShow.modifierFlags;
+        }
         
-        self.clearMenuItem.keyEquivalent = self.currentShortcutClear.keyCodeStringForKeyEquivalent;
-        self.clearMenuItem.keyEquivalentModifierMask = self.currentShortcutClear.modifierFlags;
+        if(self.currentShortcutClear){
+            self.clearMenuItem.keyEquivalent = self.currentShortcutClear.keyCodeStringForKeyEquivalent;
+            self.clearMenuItem.keyEquivalentModifierMask = self.currentShortcutClear.modifierFlags;
+        }
     }else{
         NSArray *menus = @[
                            self.toggleMenuItem,
