@@ -2,7 +2,7 @@
 Bookmark Plugin for Xcode 
 
 # Latest Version
-**1.0**(Now only support Xcode >= 8)
+**1.0**
 
 # Screenshot
 

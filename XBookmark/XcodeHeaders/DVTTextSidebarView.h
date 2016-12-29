@@ -37,7 +37,14 @@ typedef NSRect(^GetParaBlock)(int);
 - (void)_beginRolloverOnAnnotation:(id)arg1 event:(id)arg2;
 - (id)_clickedAnnotation:(id)arg1;
 - (unsigned long long)_drawFoldingRibbonForLine:(unsigned long long)arg1 foldbarRect:(struct CGRect)arg2 paraRect:(struct CGRect)arg3 lineNumberFontSize:(double)arg4 textView:(id)arg5;
+
+// Xcode 8
 - (void)_drawLineNumbersInSidebarRect:(CGRect)arg1 foldedIndexes:(NSUInteger *)arg2 count:(NSUInteger)arg3 linesToInvert:(id)arg4 linesToHighlight:(id)arg5 linesToReplace:(id)arg6 textView:(id)arg7 getParaRectBlock:(GetParaBlock)arg8;
+
+// Xcode 7
+- (void)_drawLineNumbersInSidebarRect:(struct CGRect)arg1 foldedIndexes:(unsigned long long *)arg2 count:(unsigned long long)arg3 linesToInvert:(id)arg4 linesToReplace:(id)arg5 getParaRectBlock:(id)arg6;
+
+
 - (void)_drawSidebarMarkersForAnnotations:(id)arg1 atIndexes:(id)arg2 textView:(id)arg3 getParaRectBlock:(GetParaBlock)arg4;
 - (void)_endRolloverOnAnnotation:(id)arg1 event:(id)arg2;
 - (void)_foldingHovered;

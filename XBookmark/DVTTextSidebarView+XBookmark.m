@@ -15,12 +15,39 @@
 
 +(void)load{
     NSError *error = nil;
+    // Xcode 7
+    [DVTTextSidebarView jr_swizzleMethod:@selector(_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:)
+                              withMethod:@selector(xbookmark_xcode7_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:)
+                                   error:& error];
+    
+    // Xcode 8
     [DVTTextSidebarView jr_swizzleMethod:@selector(_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToHighlight:linesToReplace:textView:getParaRectBlock:)
                               withMethod:@selector(xbookmark_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToHighlight:linesToReplace:textView:getParaRectBlock:)
                                    error:& error];
     
 }
 
+
+// Xcode 7
+- (void)xbookmark_xcode7_drawLineNumbersInSidebarRect:(CGRect)rect
+                                 foldedIndexes:(NSUInteger *)indexes
+                                         count:(NSUInteger)indexCount
+                                 linesToInvert:(id)invert
+                                linesToReplace:(id)replace
+                              getParaRectBlock:(id)rectBlock{
+    NSString *fileName = self.window.representedFilename;
+    
+    for(NSUInteger idx = 0; idx < indexCount; ++idx){
+        NSUInteger line = indexes[idx];
+        if([[XBookmarkModel sharedModel]hasBookmark:fileName lineNumber:line]){
+            [self xbookmark_drawBookmarkAtLine:line];
+        }
+    }
+    
+    [self xbookmark_xcode7_drawLineNumbersInSidebarRect:rect foldedIndexes:indexes count:indexCount linesToInvert:invert linesToReplace:replace getParaRectBlock:rectBlock];
+}
+
+// Xcode 8
 - (void)xbookmark_drawLineNumbersInSidebarRect:(CGRect)rect
                                  foldedIndexes:(NSUInteger *)indexes
                                          count:(NSUInteger)indexCount
