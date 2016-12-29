@@ -15,8 +15,8 @@
 
 +(void)load{
     NSError *error = nil;
-    [DVTTextSidebarView jr_swizzleMethod:@selector(_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:)
-                              withMethod:@selector(xbookmark_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:)
+    [DVTTextSidebarView jr_swizzleMethod:@selector(_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToHighlight:linesToReplace:textView:getParaRectBlock:)
+                              withMethod:@selector(xbookmark_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToHighlight:linesToReplace:textView:getParaRectBlock:)
                                    error:& error];
     
 }
@@ -25,8 +25,10 @@
                                  foldedIndexes:(NSUInteger *)indexes
                                          count:(NSUInteger)indexCount
                                  linesToInvert:(id)invert
+                              linesToHighlight:(id)highlight
                                 linesToReplace:(id)replace
-                              getParaRectBlock:(id)rectBlock{
+                                      textView:(id)textView
+                              getParaRectBlock:(GetParaBlock)rectBlock{
     NSString *fileName = self.window.representedFilename;
     
     for(NSUInteger idx = 0; idx < indexCount; ++idx){
@@ -36,7 +38,7 @@
         }
     }
     
-    [self xbookmark_drawLineNumbersInSidebarRect:rect foldedIndexes:indexes count:indexCount linesToInvert:invert linesToReplace:replace getParaRectBlock:rectBlock];
+    [self xbookmark_drawLineNumbersInSidebarRect:rect foldedIndexes:indexes count:indexCount linesToInvert:invert linesToHighlight:highlight linesToReplace:replace textView:textView getParaRectBlock:rectBlock];
 }
 
 static inline NSPoint NSPointRelativeTo(NSPoint point,NSPoint origin){

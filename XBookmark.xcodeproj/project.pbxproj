@@ -39,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CBD8C56E1E14B48200D3C7EE /* DVTTextSidebarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DVTTextSidebarView.h; sourceTree = "<group>"; };
 		D149A46A1BDE5A720009F581 /* DVTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFoundation.h; sourceTree = "<group>"; };
 		D149A46B1BDE5A720009F581 /* DVTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTKit.h; sourceTree = "<group>"; };
 		D149A46C1BDE5A720009F581 /* IDEFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFoundation.h; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 				D149A46C1BDE5A720009F581 /* IDEFoundation.h */,
 				D149A46D1BDE5A720009F581 /* IDEKit.h */,
 				D149A46E1BDE5A720009F581 /* IDESourceEditor.h */,
+				CBD8C56E1E14B48200D3C7EE /* DVTTextSidebarView.h */,
 			);
 			path = XcodeHeaders;
 			sourceTree = "<group>";

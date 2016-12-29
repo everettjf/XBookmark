@@ -1,8 +1,8 @@
 # XBookmark
-Bookmark Plugin for Xcode
+Bookmark Plugin for Xcode 
 
 # Latest Version
-**0.4**
+**1.0**(Now only support Xcode >= 8)
 
 # Screenshot
 
@@ -41,6 +41,7 @@ Now, you can see menus in the `Edit` Menu.
 
 # History Versions
 
+- 2016-12-29 1.0 Xcode8 Support (Only support Xcode8)
 - 2016-07-14 0.4 Add shortcut for clear bookmarks
 - 2015-10-31 0.3 
     1. Shortcut configurable.

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DVTKit.h"
+#import "DVTTextSidebarView.h"
 
 @interface DVTTextSidebarView (XBookmark)
 
