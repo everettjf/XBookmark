@@ -64,9 +64,7 @@ Now, you can see `XBookmark` menus in the `Edit` Menu. Press `F3` in source edit
 - type `Ctrl + Shift + F3` to jump to previous bookmark.
 - type `Command + Shift + F3` to clear bookmarks.
 
-# Plan for next version
-- Bookmark Comment
-- Toggle Bookmark with Mnemonic
+
 
 # Thanks for
 - XToDo
