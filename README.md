@@ -45,7 +45,7 @@ Now, you can see menus in the `Edit` Menu.
 
 # History Versions
 
-- 2016-12-29 1.0 Xcode8 Support (Only support Xcode8)
+- 2016-12-29 1.0 Add Xcode8 Support
 - 2016-07-14 0.4 Add shortcut for clear bookmarks
 - 2015-10-31 0.3 
     1. Shortcut configurable.
