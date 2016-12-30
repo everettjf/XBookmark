@@ -1,9 +1,6 @@
 # XBookmark
 Bookmark Plugin for Xcode 
 
-# Latest Version
-**1.0**
-
 # Compatibility
 
 Xcode 8.x and Xcode 7.x
