@@ -16,13 +16,45 @@ Xcode 8.x and Xcode 7.x
 - Next Bookmark
 - Previous Bookmark
 
-# How To Install
+# Install
 
-- Step 1 : Install [Alcatraz](http://alcatraz.io).
-- Step 2 : Search `XBookmark` from Window->Package Manager and click `Install`.
-- Step 3 : Restart Xcode.
+  Xcode 8 Users, Follow instructions in [INSTALL_Xcode8.md](INSTALL_Xcode8.md) first.
+  
+  Download source code or clone the repo. Then,
+  
+  1. Confirm `xcode-select` points to your Xcode
+  ```bash
+  $ xcode-select -p
+  /Applications/Xcode.app/Contents/Developer
+  ```
+  
+  If this doesn't show your Xcode application path, use `xcode-select -s` to set.
+  
+  2. make
+  ```bash
+  $ make
+  ```
 
-Now, you can see menus in the `Edit` Menu.
+  If you see something like 
+  
+  ```
+  XBookmark hasn't confirmed the compatibility with your Xcode, Version X.X
+  Do you want to compile XBookmark with support Xcode Version X.X at your own risk? 
+  ```
+  Press y if you want to use XBookmark with your Xcode version (even it is not confirmed it works)
+  
+  3. Restart your Xcode. 
+
+  4. Launch Xcode. You'll be asked if you load XBookmark. Press 'Yes' to it.
+     If you press 'No' by mistake, close the Xcode and execute the following from a terminal
+
+    ```
+    defaults delete  com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-X.X     (X.X is your Xcode version)
+    ```
+    
+     Then relaunch Xcode.
+
+Now, you can see `XBookmark` menus in the `Edit` Menu. Press `F3` in source editor , and you will see the `STAR`.
 
 # Usage
 **Shortcuts configurable**
