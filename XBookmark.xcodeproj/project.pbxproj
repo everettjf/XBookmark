@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D17523FA1BDE60D900533192 /* DevToolsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523F91BDE60D800533192 /* DevToolsCore.framework */; };
 		D17523FC1BDE60FA00533192 /* IDEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523FB1BDE60F900533192 /* IDEFoundation.framework */; };
 		D17523FE1BDE610A00533192 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523FD1BDE610900533192 /* IDEKit.framework */; };
 		D17524001BDE612900533192 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17523FF1BDE612800533192 /* Cocoa.framework */; };
@@ -105,7 +104,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D17523FA1BDE60D900533192 /* DevToolsCore.framework in Frameworks */,
 				D1B081091BB5B471007B4821 /* AppKit.framework in Frameworks */,
 				D1B0810B1BB5B471007B4821 /* Foundation.framework in Frameworks */,
 				D17523FC1BDE60FA00533192 /* IDEFoundation.framework in Frameworks */,
