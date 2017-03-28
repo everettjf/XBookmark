@@ -72,6 +72,7 @@ Now, you can see `XBookmark` menus in the `Edit` Menu. Press `F3` in source edit
 
 # History Versions
 
+- 2017-03-28 1.1 Xcode8.3 Support
 - 2016-12-29 1.0 Add Xcode8 Support
 - 2016-07-14 0.4 Add shortcut for clear bookmarks
 - 2015-10-31 0.3 
