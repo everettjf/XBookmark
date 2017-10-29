@@ -52,7 +52,7 @@ Xcode 8.x and Xcode 7.x
     defaults delete  com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-X.X     (X.X is your Xcode version)
   ```
     
-     Then relaunch Xcode.
+  Then relaunch Xcode.
 
 Now, you can see `XBookmark` menus in the `Edit` Menu. Press `F3` in source editor , and you will see the `STAR`.
 
